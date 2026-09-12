@@ -29,8 +29,8 @@
   justify-content: center;
 }
 
-@mixin animation($target: all, $flow: ease-in-out) {
-  transition: $target $animation-time $flow;
+@mixin animation($target: all, $time: $animation-time, $flow: ease-in-out) {
+  transition: $target $time $flow;
 }
 
 @mixin page-bg($color) {

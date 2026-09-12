@@ -7,10 +7,24 @@
   cursor: pointer;
 
   &__primary {
-    @include f-text(rem(24), white, 700);
-
+    padding: 16px 26px;
+    @include flex-center;
+    @include f-text(rem(24), white, 600);
     &--green {
-      background-color: red;
+      background-color: $green-olive;
+    }
+    &--creme {
+      background-color: $creme-main;
+      color: $green-recipe;
+      @include animation(all);
+      width: 186px; // todo - check if it is okay that the btn is growing
     }
   }
+}
+
+// Hoverstates
+
+.btn__primary--creme:hover {
+  background-color: $creme-primary-hover;
+  font-weight: 700;
 }
