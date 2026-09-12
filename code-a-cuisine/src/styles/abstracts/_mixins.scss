@@ -38,3 +38,21 @@
   min-height: 100dvh;
   display: block;
 }
+
+@mixin f-title($size: $size, $color: white, $weight: 400, $letter-spacing: 0) {
+  font-family: $f-title;
+  font-size: $size;
+  font-weight: $weight;
+  letter-spacing: $letter-spacing;
+  color: $color;
+  text-box: trim-both cap text;
+}
+
+@mixin f-text($size: $size, $color: white, $weight: 400, $letter-spacing: 0) {
+  font-family: $f-txt;
+  font-size: $size;
+  font-weight: $weight;
+  letter-spacing: $letter-spacing;
+  color: $color;
+  text-box: trim-both cap text;
+}

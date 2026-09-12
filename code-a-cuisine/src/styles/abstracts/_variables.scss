@@ -1,12 +1,29 @@
+// ##### Colors #####
+// green
+$green-bg: rgba(57, 96, 57);
+$middle-green: rgba(30, 85, 21);
+$secondary-bg-hover: rgba($green-bg, 0.1);
+
+//creme
+$creme-main: rgba(250, 240, 230);
+$creme-yellow: rgba(245, 245, 220, 1);
+
+//BreakPoints
 $breakpoint-sm: 500px;
 $breakpoint-md: 800px;
 $breakpoint-lg: 992px;
 $breakpoint-xl: 1200px;
-$max-dp-width: 1220px;
-$lg-dp-width: 1042px;
+
+$max-dp-width: 1440px;
+$lg-dp-width: 1332px;
 
 $z-index-dropdown: 1000;
 $z-index-modal: 1050;
 $z-index-toast: 1100;
 
+// Animation
 $animation-time: 250ms;
+
+// Fonts
+$f-txt: 'Quicksand', sans-serif;
+$f-title: 'Ubuntu', sans-serif;

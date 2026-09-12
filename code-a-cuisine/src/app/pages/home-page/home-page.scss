@@ -1,0 +1,39 @@
+@use '../../../styles/abstracts' as *;
+:host {
+  @include page-bg($green-bg);
+}
+.main {
+  min-height: 100dvh;
+  max-width: $max-dp-width;
+  margin: 0 auto;
+
+  &__content {
+    padding-top: clamp(12px, 2vw, 40px);
+    padding-left: clamp(16px, 2vw, 68px);
+  }
+}
+
+.dishes {
+  height: 100dvh;
+  overflow: hidden;
+
+  &__img {
+    width: clamp(450px, calc(-4.67vw + 547.29px), 580px);
+    transform: translatey(-5%);
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.title {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 16px;
+
+  &--first {
+    @include f-title(clamp(rem(64), 10vw, rem(104)), $creme-yellow, 700); // todo Check vw
+  }
+  &--second {
+    @include f-text(clamp(rem(24), 4vw, rem(48)), $creme-yellow, 600); // todo Check vw
+  }
+}

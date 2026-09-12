@@ -1,0 +1,42 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: code-a-cuisine/package-lock.json
+      - run: npm ci
+        working-directory: code-a-cuisine
+      - run: npm run build
+        working-directory: code-a-cuisine
+
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: code-a-cuisine/package-lock.json
+      - run: npm ci
+        working-directory: code-a-cuisine
+      - run: npm test -- --watch=false
+        working-directory: code-a-cuisine
