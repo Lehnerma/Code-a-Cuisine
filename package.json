@@ -1,0 +1,23 @@
+{
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "lint:styles": "stylelint \"code-a-cuisine/src/**/*.scss\"",
+    "lint:styles:fix": "stylelint \"code-a-cuisine/src/**/*.scss\" --fix",
+    "format": "prettier --write \"code-a-cuisine/src/**/*.{ts,html,scss}\"",
+    "format:check": "prettier --check \"code-a-cuisine/src/**/*.{ts,html,scss}\""
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "angular-eslint": "^22.1.0",
+    "eslint": "^10.8.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-jsdoc": "^64.2.1",
+    "eslint-plugin-unicorn": "^73.0.0",
+    "globals": "^17.11.0",
+    "prettier": "^3.8.1",
+    "stylelint": "^17.14.1",
+    "stylelint-config-standard-scss": "^17.0.0",
+    "typescript-eslint": "^8.67.0"
+  }
+}
