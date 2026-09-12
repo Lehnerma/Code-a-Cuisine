@@ -39,7 +39,7 @@
   display: block;
 }
 
-@mixin f-title($size: $size, $color: white, $weight: 400, $letter-spacing: 0) {
+@mixin f-title($size: rem(16), $color: white, $weight: 400, $letter-spacing: 0) {
   font-family: $f-title;
   font-size: $size;
   font-weight: $weight;
@@ -48,7 +48,7 @@
   text-box: trim-both cap text;
 }
 
-@mixin f-text($size: $size, $color: white, $weight: 400, $letter-spacing: 0) {
+@mixin f-text($size: rem(16), $color: white, $weight: 400, $letter-spacing: 0) {
   font-family: $f-txt;
   font-size: $size;
   font-weight: $weight;

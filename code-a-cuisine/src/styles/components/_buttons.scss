@@ -1,1 +1,16 @@
 @use '../abstracts' as *;
+
+.btn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  &__primary {
+    @include f-text(rem(24), white, 700);
+
+    &--green {
+      background-color: red;
+    }
+  }
+}
