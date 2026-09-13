@@ -1,5 +1,17 @@
 @use '../abstracts' as *;
 
-fieldset {
+.fieldset {
   border: none;
+
+  &__input {
+    border: none;
+    border-radius: 20px;
+    background-color: $creme-main-08;
+    @include f-text(rem(18), $green-dark-04, 500);
+    padding: 8px 12px;
+
+    &:focus {
+      outline: solid 2px $green-dark-04;
+    }
+  }
 }

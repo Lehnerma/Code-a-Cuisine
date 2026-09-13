@@ -1,1 +1,38 @@
 @use '../../../styles/abstracts' as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+
+  background-color: $green-light-bg;
+  padding: 24px 20px;
+}
+
+.fieldset {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 11px;
+  &--ingredient {
+    grid-template-areas:
+      'label label'
+      'input input';
+  }
+
+  &--serving {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      'label label label'
+      'size unit add';
+  }
+
+  &__label {
+    grid-area: label;
+    @include f-text(rem(18), $green-dark, 500);
+  }
+
+  &__input {
+    grid-area: input;
+  }
+}

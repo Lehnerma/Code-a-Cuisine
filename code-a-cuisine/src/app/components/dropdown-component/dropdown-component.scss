@@ -1,1 +1,68 @@
 @use '../../../styles/abstracts' as *;
+
+.dropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &__btn {
+    @include flex-center;
+    gap: 8px;
+    padding: 8px 8px;
+    border-radius: 48px;
+    background-color: $creme-main;
+  }
+
+  &__icon {
+    width: 10px;
+    height: 5px;
+    fill: $green-dark;
+    transition: transform $animation-time ease-in-out;
+
+    &.is-open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(-10px);
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 300ms ease-in-out,
+      transform 350ms ease-in-out;
+
+    &.is-open {
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+      pointer-events: auto;
+    }
+  }
+
+  &__option {
+    &--btn {
+      width: 100%;
+      padding: 4px 18px;
+      @include f-text(rem(16), $green-dark, 500);
+      border-radius: 8px;
+
+      &:hover {
+        background-color: $creme-main-06;
+      }
+    }
+  }
+
+  &__value {
+    @include f-text(rem(16), $green-dark, 500);
+    line-height: 20px;
+  }
+}
