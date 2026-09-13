@@ -1,1 +1,61 @@
 @use '../abstracts' as *;
+
+.btn[data-theme-btn='green'] {
+  --primary-txt: #{$creme-main};
+  --primary-txt-hover: #{$white};
+  --primary-bg: #{$green-olive};
+  --primary-bg-hover: #{$green-olive};
+  --secondary-txt: #{$green-olive};
+  --secondary-bg-hover: #{$green-secondary-hover};
+}
+
+.btn[data-theme-btn='creme'] {
+  --primary-txt: #{$green-recipe};
+  --primary-txt-hover: #{$green-recipe};
+  --primary-bg: #{$creme-main};
+  --primary-bg-hover: #{$creme-primary-hover};
+  --secondary-txt: #{$creme-main};
+  --secondary-bg-hover: #{$creme-secondary-hover};
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  &__primary {
+    padding: 16px 26px;
+    @include flex-center;
+    @include f-text(clamp(rem(16), 5vw, rem(24)), var(--primary-txt), 600);
+    background-color: var(--primary-bg);
+    transition:
+      background-color $animation-time ease-in-out,
+      font-weight $animation-time ease-in-out;
+    &:hover {
+      background-color: (var(--primary-bg-hover));
+      font-weight: 700;
+    }
+  }
+
+  &__secondary {
+    @include f-text(clamp(rem(18), 5vw, rem(20)), var(--secondary-txt), 500);
+    background-color: transparent;
+
+    &:hover {
+      background-color: var(--secondary-bg-hover);
+    }
+
+    &--icon {
+      width: 26px;
+      height: 15px;
+      fill: var(--secondary-txt);
+    }
+    &:has(.btn__secondary--icon) {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 26px;
+    }
+  }
+}

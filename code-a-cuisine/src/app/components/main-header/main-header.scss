@@ -1,0 +1,30 @@
+@use '../../../styles/abstracts' as *;
+
+.header {
+  display: flex;
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: clamp(16px, 5vw, 32px);
+  }
+
+  &__link {
+    @include flex-center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 16px 26px;
+    color: var(--txt-color);
+
+    &--icon {
+      width: 22px;
+      height: 15px;
+      fill: var(--icon-fill);
+    }
+  }
+}
+
+.header__link:hover {
+  background-color: var(--bg-hover);
+}

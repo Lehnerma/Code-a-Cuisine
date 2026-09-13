@@ -29,12 +29,30 @@
   justify-content: center;
 }
 
-@mixin animation($target: all, $flow: ease-in-out) {
-  transition: $target $animation-time $flow;
+@mixin animation($target: all, $time: $animation-time, $flow: ease-in-out) {
+  transition: $target $time $flow;
 }
 
 @mixin page-bg($color) {
   background-color: $color;
   min-height: 100dvh;
   display: block;
+}
+
+@mixin f-title($size: rem(16), $color: white, $weight: 400, $letter-spacing: 0) {
+  font-family: $f-title;
+  font-size: $size;
+  font-weight: $weight;
+  letter-spacing: $letter-spacing;
+  color: $color;
+  text-box: trim-both cap text;
+}
+
+@mixin f-text($size: rem(16), $color: white, $weight: 400, $letter-spacing: 0) {
+  font-family: $f-txt;
+  font-size: $size;
+  font-weight: $weight;
+  letter-spacing: $letter-spacing;
+  color: $color;
+  text-box: trim-both cap text;
 }

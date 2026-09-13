@@ -1,0 +1,15 @@
+@use 'variables' as *;
+
+.theme[data-theme='green'] {
+  --icon-fill: #{$middle-green};
+  --bg-hover: #{$secondary-bg-hover};
+  --txt-color: #{$middle-green};
+  --title: #{$creme-main};
+}
+
+.theme[data-theme='creme'] {
+  --icon-fill: #{$creme-main};
+  --bg-hover: #{$secondary-bg-hover};
+  --txt-color: #{$creme-main};
+  --title: #{$middle-green};
+}
