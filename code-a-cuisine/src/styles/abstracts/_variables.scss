@@ -3,14 +3,17 @@
 $green-bg: rgba(57, 96, 57);
 $middle-green: rgba(30, 85, 21);
 $secondary-bg-hover: rgba($green-bg, 0.1);
-$green-olive: rgba(57, 96, 57);
+$green-olive: $green-bg;
 $green-primary-hover: rgba(5, 94, 5);
+$green-secondary-hover: rgba($green-bg, 0.1);
 $green-recipe: rgba(0, 128, 0);
 
 //creme
 $creme-main: rgba(250, 240, 230);
 $creme-yellow: rgba(245, 245, 220);
 $creme-primary-hover: rgba(250, 224, 198);
+$creme-secondary-hover: rgba($creme-primary-hover, 0.2);
+$white: white;
 
 //BreakPoints
 $breakpoint-sm: 500px;

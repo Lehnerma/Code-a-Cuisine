@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { NgClass } from '@angular/common';
 
 @Component({
@@ -8,5 +8,6 @@ import { NgClass } from '@angular/common';
   templateUrl: './button.html',
 })
 export class Button {
-  @Input() className: string | string[] = '';
+  className = input<string | string[]>();
+  theme = input<'green' | 'creme'>();
 }

@@ -1,12 +1,12 @@
 @use 'variables' as *;
 
-.section[data-theme='green'] {
+.theme[data-theme='green'] {
   --icon-fill: #{$middle-green};
   --bg-hover: #{$secondary-bg-hover};
   --txt-color: #{$middle-green};
   --title: #{$creme-main};
 }
-.section[data-theme='creme'] {
+.theme[data-theme='creme'] {
   --icon-fill: #{$creme-main};
   --bg-hover: #{$secondary-bg-hover};
   --txt-color: #{$creme-main};
