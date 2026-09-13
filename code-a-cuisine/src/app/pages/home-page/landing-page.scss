@@ -30,7 +30,7 @@
 
   &__img {
     width: clamp(450px, calc(-4.67vw + 547.29px), 580px);
-    transform: translatey(-5%);
+    transform: translateY(-5%);
     object-fit: cover;
     object-position: center;
   }
