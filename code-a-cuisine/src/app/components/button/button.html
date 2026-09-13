@@ -1,3 +1,9 @@
-<button class="btn" [class]="className()" type="button" [attr.data-theme-btn]="theme()">
+<button
+  class="btn"
+  [class]="className()"
+  type="button"
+  [attr.data-theme-btn]="theme()"
+  [routerLink]="targetRoute()"
+>
   <ng-content></ng-content>
 </button>
