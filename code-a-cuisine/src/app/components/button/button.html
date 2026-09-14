@@ -1,4 +1,14 @@
-<button class="btn" [class]="className()" type="button" [attr.data-theme-btn]="theme()" [routerLink]="targetRoute()">
+@if (tag() === 'a') {
+  <a class="btn" [class]="className()" [attr.data-theme-btn]="theme()" [routerLink]="targetRoute()">
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+  </a>
+} @else {
+  <button class="btn" [class]="className()" type="button" [attr.data-theme-btn]="theme()">
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+  </button>
+}
+
+<ng-template #content>
   @if (icon() === 'bin') {
     <svg class="btn__bin--icon bin-icon" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
       <mask id="mask0_16703_120" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="19" height="19">
@@ -36,4 +46,4 @@
   } @else {
     <ng-content></ng-content>
   }
-</button>
+</ng-template>
