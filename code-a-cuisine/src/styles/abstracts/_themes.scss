@@ -1,9 +1,9 @@
 @use 'variables' as *;
 
 .theme[data-theme='green'] {
-  --icon-fill: #{$middle-green};
+  --icon-fill: #{$green-middle};
   --bg-hover: #{$secondary-bg-hover};
-  --txt-color: #{$middle-green};
+  --txt-color: #{$green-middle};
   --title: #{$creme-main};
 }
 
@@ -11,5 +11,5 @@
   --icon-fill: #{$creme-main};
   --bg-hover: #{$secondary-bg-hover};
   --txt-color: #{$creme-main};
-  --title: #{$middle-green};
+  --title: #{$green-middle};
 }
