@@ -59,27 +59,4 @@
       padding: 16px 26px;
     }
   }
-
-  &__add {
-    padding: 9px;
-    border-radius: 5px;
-    &--icon {
-      fill: $green-dark;
-      width: 24px;
-      height: 24px;
-    }
-
-    &:hover {
-      background-color: $creme-main;
-      .add-icon {
-        fill: $green-olive;
-      }
-    }
-    &:active {
-      background-color: transparent;
-      .add-icon {
-        fill: $green-recipe;
-      }
-    }
-  }
 }

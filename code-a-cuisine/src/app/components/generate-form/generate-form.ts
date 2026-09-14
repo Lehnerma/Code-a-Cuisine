@@ -8,4 +8,6 @@ import { Button } from '../button/button';
   styleUrl: './generate-form.scss',
   templateUrl: './generate-form.html',
 })
-export class GenerateForm {}
+export class GenerateForm {
+  // todo validation for the serving to only numbers
+}

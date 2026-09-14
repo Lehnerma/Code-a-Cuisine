@@ -1,6 +1,5 @@
 import { Component, input } from '@angular/core';
-import {RouterLink} from '@angular/router';
-
+import { RouterLink } from '@angular/router';
 
 @Component({
   imports: [RouterLink],
@@ -10,6 +9,7 @@ import {RouterLink} from '@angular/router';
 })
 export class Button {
   className = input<string | string[]>();
+  icon = input<'add' | 'bin' | 'check' | 'edit'>();
   theme = input<'green' | 'creme'>();
   targetRoute = input<string | string[]>();
 }

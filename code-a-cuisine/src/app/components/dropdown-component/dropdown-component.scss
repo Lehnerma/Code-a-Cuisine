@@ -1,16 +1,22 @@
 @use '../../../styles/abstracts' as *;
+:host {
+  height: 100%;
+}
 
 .dropdown {
   position: relative;
   display: flex;
   flex-direction: column;
+  width: fit-content;
+  height: var(--dropdown-height);
 
   &__btn {
     @include flex-center;
-    gap: 8px;
-    padding: 8px 8px;
+    gap: 4px;
+    padding: 8px;
     border-radius: 48px;
     background-color: $creme-main;
+    height: var(--dropdown-height);
   }
 
   &__icon {

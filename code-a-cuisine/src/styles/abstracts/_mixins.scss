@@ -18,7 +18,9 @@
       @content;
     }
   } @else {
-    @warn "Unbekannter Breakpoint: #{$breakpoint}";
+    @media (min-width: $breakpoint) {
+      @content;
+    }
   }
 }
 

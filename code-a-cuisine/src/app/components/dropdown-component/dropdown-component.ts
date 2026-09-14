@@ -13,6 +13,8 @@ import { Component, computed, input, signal } from '@angular/core';
 export class DropdownComponent {
   options = input<string[]>(['gram', 'piece', 'ml']);
   label = input<string>();
+  className = input<string>();
+  height = input<string>('100%');
   isOpen = signal(false);
   selectedValue = signal<string | null>(null);
   listboxId = `dropdown-listbox-${Math.random().toString(36).slice(2)}`;

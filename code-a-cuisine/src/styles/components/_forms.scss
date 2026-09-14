@@ -4,6 +4,9 @@
   border: none;
 
   &__input {
+    display: flex;
+    width: 100%;
+
     border: none;
     border-radius: 20px;
     background-color: $creme-main-08;
@@ -14,4 +17,8 @@
       outline: solid 2px $green-dark-04;
     }
   }
+}
+
+.input-sm {
+  max-width: 60px;
 }

@@ -1,21 +1,15 @@
-<div class="dropdown">
+<div class="dropdown" [style.--dropdown-height]="height()">
   <button
     (click)="toggle()"
     [attr.aria-controls]="listboxId"
     [attr.aria-expanded]="isOpen()"
     aria-haspopup="listbox"
     class="dropdown__btn btn"
+    [style.--dropdown-height]="height()"
     type="button"
   >
     <span class="dropdown__value">{{ displayLabel() }}</span>
-    <svg
-      [class.is-open]="isOpen()"
-      aria-hidden="true"
-      class="dropdown__icon"
-      fill="none"
-      viewBox="0 0 10 5"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg [class.is-open]="isOpen()" aria-hidden="true" class="dropdown__icon" fill="none" viewBox="0 0 10 5" xmlns="http://www.w3.org/2000/svg">
       <path d="M5 5L10 0L0 0L5 5Z" />
     </svg>
   </button>

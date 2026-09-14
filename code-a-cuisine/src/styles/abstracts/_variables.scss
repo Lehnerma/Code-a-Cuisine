@@ -1,11 +1,12 @@
 // ##### Colors #####
 // green
-$green-bg: rgba(57, 96, 57);
-$secondary-bg-hover: rgba($green-bg, 0.1);
-$green-secondary-hover: rgba($green-bg, 0.1);
-$green-light-bg: rgba($green-bg, 0.3);
+$green-main: rgba(57, 96, 57);
+$green-main-04: rgba($green-main, 0.4);
+$secondary-bg-hover: rgba($green-main, 0.1);
+$green-secondary-hover: rgba($green-main, 0.1);
+$green-light-bg: rgba($green-main, 0.3);
 $middle-green: rgba(30, 85, 21);
-$green-olive: $green-bg;
+$green-olive: $green-main;
 $green-primary-hover: rgba(5, 94, 5);
 $green-recipe: rgba(0, 128, 0);
 $green-dark: rgba(16, 49, 11);
@@ -22,6 +23,8 @@ $creme-main-04: rgba($creme-main, 0.4);
 $creme-yellow: rgba(245, 245, 220);
 $creme-primary-hover: rgba(250, 224, 198);
 $creme-secondary-hover: rgba($creme-primary-hover, 0.2);
+
+$creme-white: rgba(255, 254, 254);
 $white: white;
 
 //BreakPoints
