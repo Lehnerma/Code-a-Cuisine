@@ -2,21 +2,23 @@
   <main-header backLink="/generate-recipe" backLinkName="Ingredients"></main-header>
   <main class="body">
     <h1>Choose your preferences</h1>
-    <form>
-      <fieldset>
-        <legend>How many portions you need?</legend>
-        <app-stepper [(value)]="portions" [min]="1" label="Portions" />
-      </fieldset>
-      <fieldset>
-        <legend>How many are coocking?</legend>
-        <app-stepper [(value)]="persons" [min]="1" [max]="4" label="Person" />
-      </fieldset>
+    <form class="form">
+      <article class="form__portions">
+        <fieldset class="form__fieldset fieldset">
+          <legend class="legend">How many portions you need?</legend>
+          <app-stepper [(value)]="portions" [min]="1" [max]="10" label="Portions" />
+        </fieldset>
+        <fieldset class="form__fieldset fieldset">
+          <legend class="legend">How many are coocking?</legend>
+          <app-stepper [(value)]="persons" [min]="1" [max]="4" label="Person" />
+        </fieldset>
+      </article>
 
-      <article>
-        <fieldset>
-          <div>
-            <img src="" alt="watch icon" />
-            <legend>Coocking time</legend>
+      <article class="greenbg form__preferences">
+        <fieldset class="form__fieldset fieldset">
+          <div class="legend-container">
+            <img src="/assets/icons/schedule.png" alt="watch" />
+            <legend class="legend">Coocking time</legend>
           </div>
           <section class="chip-group">
             @for (opt of cookingTimeOptions; track opt.value) {
@@ -30,34 +32,26 @@
           </section>
         </fieldset>
 
-        <fieldset>
-          <div>
-            <img src="" alt="world icon" />
-            <legend>Cousine</legend>
+        <fieldset class="form__fieldset fieldset">
+          <div class="legend-container">
+            <img src="/assets/icons/public.png" alt="world" />
+            <legend class="legend">Cousine</legend>
           </div>
           <section class="chip-group">
             @for (opt of cuisineOptions; track opt.value) {
-              <app-chip
-                [label]="opt.label"
-                [checked]="cuisine().includes(opt.value)"
-                (toggled)="toggleSelection(cuisine, opt.value)"
-              />
+              <app-chip [label]="opt.label" [checked]="cuisine().includes(opt.value)" (toggled)="toggleSelection(cuisine, opt.value)" />
             }
           </section>
         </fieldset>
 
-        <fieldset>
-          <div>
-            <img src="" alt="fork and spoon" />
-            <legend>Diet preferences</legend>
+        <fieldset class="form__fieldset fieldset">
+          <div class="legend-container">
+            <img src="/assets/icons/fork_spoon.png" alt="fork and spoon" />
+            <legend class="legend">Diet preferences</legend>
           </div>
           <section class="chip-group">
             @for (opt of dietOptions; track opt.value) {
-              <app-chip
-                [label]="opt.label"
-                [checked]="diet().includes(opt.value)"
-                (toggled)="toggleSelection(diet, opt.value)"
-              />
+              <app-chip [label]="opt.label" [checked]="diet().includes(opt.value)" (toggled)="toggleSelection(diet, opt.value)" />
             }
           </section>
         </fieldset>

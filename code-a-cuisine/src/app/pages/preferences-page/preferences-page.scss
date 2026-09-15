@@ -6,20 +6,50 @@
   gap: clamp(16px, 3vw, 32px);
 }
 
-fieldset {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(8px, 2vw, 16px);
-  border: none;
-  padding: 0;
-}
-
-legend {
-  @include f-text(rem(18), $green-dark, 600);
+.legend {
+  @include f-text(rem(20), $green-dark, 600);
+  margin-bottom: 16px;
 }
 
 .chip-group {
   display: flex;
   flex-wrap: wrap;
   gap: clamp(8px, 1.5vw, 12px);
+}
+
+.greenbg {
+  background-color: $green-light-bg;
+  border-radius: 20px;
+  padding: 24px 20px;
+}
+
+.legend-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  &__portions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), auto));
+    gap: 24px;
+  }
+
+  &__preferences {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__fieldset {
+    display: grid;
+    grid-template-rows: auto auto;
+    justify-items: start;
+    gap: 24px;
+  }
 }
