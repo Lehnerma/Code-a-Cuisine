@@ -14,4 +14,5 @@ export class Button {
   theme = input<'green' | 'creme'>();
   targetRoute = input<string | string[]>();
   tag = input<'button' | 'a'>('button');
+  btnType = input<'button' | 'submit'>('button');
 }

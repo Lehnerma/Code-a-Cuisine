@@ -23,7 +23,7 @@
     }
 
     &:checked + .chip__label {
-      background-color: $green-salbei;
+      background-color: $green-main-02;
       color: $green-dark;
     }
   }
@@ -38,6 +38,7 @@
 
     &:hover {
       background-color: $creme-primary-hover;
+      color: $green-middle;
     }
   }
 

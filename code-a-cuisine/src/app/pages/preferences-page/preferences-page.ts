@@ -3,6 +3,7 @@ import { BodyWrapper } from '../../shared/body-wrapper/body-wrapper';
 import { MainHeader } from '../../components/main-header/main-header';
 import { Stepper } from '../../components/stepper/stepper';
 import { Chip } from '../../components/chip/chip';
+import { Button } from '../../components/button/button';
 
 /** Option shown as a selectable chip within a preferences group. */
 interface ChipOption {
@@ -12,7 +13,7 @@ interface ChipOption {
 }
 
 @Component({
-  imports: [BodyWrapper, MainHeader, Stepper, Chip],
+  imports: [BodyWrapper, MainHeader, Stepper, Chip, Button],
   selector: 'app-preferences-page',
   styleUrl: './preferences-page.scss',
   templateUrl: './preferences-page.html',
@@ -52,8 +53,6 @@ export class PreferencesPage {
    * selected, otherwise removes it. Shared by all chip groups.
    */
   toggleSelection(group: WritableSignal<string[]>, value: string): void {
-    group.update((selected) =>
-      selected.includes(value) ? selected.filter((item) => item !== value) : [...selected, value],
-    );
+    group.update((selected) => (selected.includes(value) ? selected.filter((item) => item !== value) : [...selected, value]));
   }
 }
