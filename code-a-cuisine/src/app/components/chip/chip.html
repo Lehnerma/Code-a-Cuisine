@@ -1,0 +1,7 @@
+<span class="chip">
+  <input [id]="inputId" [checked]="checked()" (change)="toggled.emit()" class="chip__input" type="checkbox" />
+  <label [for]="inputId" class="chip__label">{{ label() }}</label>
+  @if (caption()) {
+    <span class="chip__caption">{{ caption() }}</span>
+  }
+</span>

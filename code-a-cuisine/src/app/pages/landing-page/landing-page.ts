@@ -4,7 +4,7 @@ import { Button } from '../../components/button/button';
 
 @Component({
   imports: [MainHeader, Button],
-  selector: 'app-home-page',
+  selector: 'app-landing-page',
   styleUrl: './landing-page.scss',
   templateUrl: './landing-page.html',
 })

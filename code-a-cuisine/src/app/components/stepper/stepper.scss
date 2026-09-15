@@ -1,0 +1,33 @@
+@use '../../../styles/abstracts' as *;
+
+// todo check the styling of the stepper buttons
+.stepper {
+  @include flex-center;
+  gap: 12px;
+
+  &__btn {
+    @include flex-center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background-color: $green-salbei-light;
+    color: $green-dark;
+
+    &:hover {
+      background-color: $green-salbei;
+    }
+
+    &:active {
+      background-color: $creme-yellow;
+    }
+  }
+
+  &__value {
+    @include flex-center;
+    min-width: 120px;
+    padding: 8px 20px;
+    border-radius: 48px;
+    background-color: $creme-main;
+    @include f-text(rem(16), $green-dark, 500);
+  }
+}

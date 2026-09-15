@@ -1,0 +1,47 @@
+@use '../../../styles/abstracts' as *;
+
+.chip {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+
+  &__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    white-space: nowrap;
+    clip-path: inset(50%);
+    border: 0;
+
+    &:focus-visible + .chip__label {
+      outline: 2px solid $green-dark;
+      outline-offset: 2px;
+    }
+
+    &:checked + .chip__label {
+      background-color: $green-salbei;
+      color: $green-dark;
+    }
+  }
+
+  &__label {
+    @include f-text(rem(16), $green-dark, 500);
+    padding: 8px 18px;
+    border-radius: 999px;
+    background-color: $creme-main;
+    cursor: pointer;
+    @include animation(background-color);
+
+    &:hover {
+      background-color: $creme-primary-hover;
+    }
+  }
+
+  &__caption {
+    @include f-text(rem(12), $green-dark, 400);
+  }
+}

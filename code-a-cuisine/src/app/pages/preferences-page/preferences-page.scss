@@ -1,0 +1,25 @@
+@use '../../../styles/abstracts' as *;
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 3vw, 32px);
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 2vw, 16px);
+  border: none;
+  padding: 0;
+}
+
+legend {
+  @include f-text(rem(18), $green-dark, 600);
+}
+
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(8px, 1.5vw, 12px);
+}

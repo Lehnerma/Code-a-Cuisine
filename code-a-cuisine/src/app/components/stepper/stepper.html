@@ -1,0 +1,5 @@
+<div class="stepper">
+  <button (click)="decrement()" [attr.aria-label]="'Decrease ' + label()" class="stepper__btn" type="button">-</button>
+  <p aria-live="polite" class="stepper__value">{{ value() }} {{ label() }}</p>
+  <button (click)="increment()" [attr.aria-label]="'Increase ' + label()" class="stepper__btn" type="button">+</button>
+</div>
