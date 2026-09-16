@@ -65,6 +65,11 @@
       grid-template-columns: auto 1fr auto;
       gap: 16px;
     }
+
+    &--empty {
+      list-style: none;
+      opacity: 0.6;
+    }
   }
 
   &__actions {

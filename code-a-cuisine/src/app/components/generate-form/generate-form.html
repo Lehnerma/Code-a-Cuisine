@@ -2,16 +2,24 @@
   <form class="form greenbg">
     <fieldset class="fieldset fieldset--ingredient">
       <label for="ingredient" class="fieldset__label">Ingredient</label>
-      <input type="text" id="ingredient" class="fieldset__input" />
+      <input #nameInput type="text" id="ingredient" class="fieldset__input" [value]="name()" (input)="name.set(nameInput.value)" />
     </fieldset>
 
     <fieldset class="fieldset">
       <label for="serving_size" class="fieldset__label">Serving size</label>
 
       <section class="fieldset--row">
-        <input type="text" id="serving_size" class="fieldset__input input-sm" placeholder="100" />
-        <app-dropdown-component className="fieldset__dropdown"></app-dropdown-component>
-        <app-button icon="add" theme="creme" className=" btn__add btn--square"></app-button>
+        <input
+          #servingSizeInput
+          type="text"
+          id="serving_size"
+          class="fieldset__input input-sm"
+          placeholder="100"
+          [value]="servingSize()"
+          (input)="servingSize.set(servingSizeInput.value)"
+        />
+        <app-dropdown-component className="fieldset__dropdown" [(selectedValue)]="unit"></app-dropdown-component>
+        <app-button icon="add" theme="creme" className=" btn__add btn--square" [disabled]="!canAdd()" (click)="addIngredient()"></app-button>
       </section>
     </fieldset>
   </form>
@@ -19,18 +27,46 @@
   <article class="greenbg form__list">
     <h2 class="form__list--title">List of your Ingredients</h2>
     <ul class="list">
-      <!-- todo creat the for loop for the ingredients list -->
-      <li class="list__element">
-        <div class="list__element--container">
-          <p>100g</p>
-          <p>Pasta</p>
-          <div class="list__actions">
-            <!-- todo create edit button -->
-            <app-button icon="edit" className="btn__edit btn--square"></app-button>
-            <app-button icon="bin" className="btn__bin btn--square"></app-button>
+      @for (ingredient of ingredients(); track ingredient.id) {
+        <li class="list__element" [attr.data-ingredient-id]="ingredient.id">
+          <div class="list__element--container">
+            @if (editingId() === ingredient.id) {
+              <section class="fieldset--row">
+                <input
+                  #editServingSizeInput
+                  type="text"
+                  class="fieldset__input input-sm"
+                  [value]="editServingSize()"
+                  (input)="editServingSize.set(editServingSizeInput.value)"
+                  (keydown.enter)="saveEdit()"
+                />
+                <app-dropdown-component className="fieldset__dropdown" [(selectedValue)]="editUnit"></app-dropdown-component>
+              </section>
+              <input
+                #editNameInput
+                type="text"
+                class="fieldset__input"
+                [value]="editName()"
+                (input)="editName.set(editNameInput.value)"
+                (keydown.enter)="saveEdit()"
+              />
+              <div class="list__actions">
+                <app-button icon="check" className="btn__edit btn--square" [disabled]="!canSave()" (click)="saveEdit()"></app-button>
+                <app-button icon="bin" className="btn__bin btn--square" (click)="removeIngredient(ingredient.id)"></app-button>
+              </div>
+            } @else {
+              <p>{{ ingredient.servingSize }}{{ ingredient.unit }}</p>
+              <p>{{ ingredient.name }}</p>
+              <div class="list__actions">
+                <app-button icon="edit" className="btn__edit btn--square" (click)="startEdit(ingredient)"></app-button>
+                <app-button icon="bin" className="btn__bin btn--square" (click)="removeIngredient(ingredient.id)"></app-button>
+              </div>
+            }
           </div>
-        </div>
-      </li>
+        </li>
+      } @empty {
+        <li class="list__element list__element--empty">No ingredients yet</li>
+      }
     </ul>
   </article>
 </div>
