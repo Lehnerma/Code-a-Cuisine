@@ -15,4 +15,5 @@ export class Button {
   targetRoute = input<string | string[]>();
   tag = input<'button' | 'a'>('button');
   btnType = input<'button' | 'submit'>('button');
+  disabled = input<boolean>(false);
 }

@@ -3,7 +3,7 @@
     <ng-container *ngTemplateOutlet="content"></ng-container>
   </a>
 } @else {
-  <button class="btn" [type]="btnType()" [class]="className()" [attr.data-theme-btn]="theme()">
+  <button class="btn" [type]="btnType()" [class]="className()" [attr.data-theme-btn]="theme()" [disabled]="disabled()">
     <ng-container *ngTemplateOutlet="content"></ng-container>
   </button>
 }
