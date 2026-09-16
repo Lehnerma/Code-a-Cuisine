@@ -9,4 +9,6 @@
   padding-top: var(--pd-top);
   padding-left: var(--pd-side);
   padding-right: var(--pd-side);
+  max-width: $max-dp-width;
+  margin: 0 auto;
 }
