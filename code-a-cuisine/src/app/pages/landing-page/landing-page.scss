@@ -5,9 +5,11 @@
 }
 
 .body {
-  min-height: 100dvh;
-  max-width: $max-dp-width;
-  margin: 0 auto;
+  &__landing {
+    min-height: 100dvh;
+    max-width: $max-dp-width;
+    margin: 0 auto;
+  }
 
   &__content {
     padding-top: clamp(12px, 2vw, 40px);
