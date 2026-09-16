@@ -39,6 +39,7 @@
 .form {
   display: grid;
   gap: 32px;
+  margin-bottom: 16px;
 
   &__title {
     @include f-text(rem(28), $green-dark, 600);
@@ -47,10 +48,10 @@
 
   &__portions {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), auto));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), auto));
     gap: 24px;
     justify-content: start;
-    @include respond-to(md) {
+    @include respond-to(680px) {
       justify-content: space-between;
     }
   }
@@ -58,7 +59,7 @@
   &__stepper {
     justify-self: start;
     align-self: end;
-    @include respond-to(600) {
+    @include respond-to(680px) {
       justify-self: center;
     }
   }
@@ -71,7 +72,6 @@
 
   &__fieldset {
     display: grid;
-    grid-template-rows: auto auto;
     justify-items: start;
     gap: 24px;
   }

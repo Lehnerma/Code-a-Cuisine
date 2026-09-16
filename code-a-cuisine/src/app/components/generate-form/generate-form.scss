@@ -1,6 +1,6 @@
 @use '../../../styles/abstracts' as *;
 
-.body {
+.body--grid {
   display: grid;
   @include respond-to(660px) {
     grid-template-columns: 1fr 1fr;
@@ -63,6 +63,7 @@
     &--container {
       display: grid;
       grid-template-columns: auto 1fr auto;
+      align-items: center;
       gap: 16px;
     }
 

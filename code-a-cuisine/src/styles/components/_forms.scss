@@ -10,7 +10,7 @@
     border: none;
     border-radius: 20px;
     background-color: $creme-main-08;
-    @include f-text(rem(18), $green-dark-04, 500);
+    @include f-text(clamp(rem(16), 2vw, rem(18)), $green-dark-04, 500);
     padding: 8px 12px;
 
     &:focus {
@@ -21,4 +21,5 @@
 
 .input-sm {
   max-width: 60px;
+  min-width: 54px;
 }

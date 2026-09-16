@@ -1,5 +1,4 @@
 import { Component, signal, WritableSignal } from '@angular/core';
-import { BodyWrapper } from '../../shared/body-wrapper/body-wrapper';
 import { MainHeader } from '../../components/main-header/main-header';
 import { Stepper } from '../../components/stepper/stepper';
 import { Chip } from '../../components/chip/chip';
@@ -13,7 +12,7 @@ interface ChipOption {
 }
 
 @Component({
-  imports: [BodyWrapper, MainHeader, Stepper, Chip, Button],
+  imports: [MainHeader, Stepper, Chip, Button],
   selector: 'app-preferences-page',
   styleUrl: './preferences-page.scss',
   templateUrl: './preferences-page.html',

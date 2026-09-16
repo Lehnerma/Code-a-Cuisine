@@ -47,7 +47,7 @@
   font-weight: $weight;
   letter-spacing: $letter-spacing;
   color: $color;
-  text-box: trim-both cap text;
+  // text-box: trim-both cap text;
 }
 
 @mixin f-text($size: rem(16), $color: white, $weight: 400, $letter-spacing: 0) {
@@ -56,5 +56,5 @@
   font-weight: $weight;
   letter-spacing: $letter-spacing;
   color: $color;
-  text-box: trim-both cap text;
+  // text-box: trim-both cap text;
 }
