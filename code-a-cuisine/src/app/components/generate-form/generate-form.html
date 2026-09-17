@@ -33,25 +33,29 @@
         <li class="list__element" [attr.data-ingredient-id]="ingredient.id">
           <div class="list__element--container">
             @if (editingId() === ingredient.id) {
-              <section class="fieldset--row">
-                <input
-                  #editServingSizeInput
-                  type="text"
-                  class="fieldset__input input-sm"
-                  [value]="editServingSize()"
-                  (input)="editServingSize.set(editServingSizeInput.value)"
-                  (keydown.enter)="saveEdit()"
-                />
-                <app-dropdown-component className="fieldset__dropdown" [(selectedValue)]="editUnit"></app-dropdown-component>
-              </section>
-              <p>{{ ingredient.name }}</p>
+              <article class="flex-rewrap">
+                <section class="fieldset--row">
+                  <input
+                    #editServingSizeInput
+                    type="text"
+                    class="fieldset__input input-sm"
+                    [value]="editServingSize()"
+                    (input)="editServingSize.set(editServingSizeInput.value)"
+                    (keydown.enter)="saveEdit()"
+                  />
+                  <app-dropdown-component className="fieldset__dropdown" [(selectedValue)]="editUnit"></app-dropdown-component>
+                </section>
+                <p>{{ ingredient.name }}</p>
+              </article>
               <div class="list__actions">
                 <app-button icon="check" className="btn__edit btn--square" [disabled]="!canSave()" (click)="saveEdit()"></app-button>
                 <app-button icon="bin" className="btn__bin btn--square" (click)="removeIngredient(ingredient.id)"></app-button>
               </div>
             } @else {
-              <p>{{ ingredient.servingSize }}{{ ingredient.unit === 'gram' ? 'g' : ingredient.unit }}</p>
-              <p>{{ ingredient.name }}</p>
+              <article class="flex-rewrap">
+                <p>{{ ingredient.servingSize }}{{ ingredient.unit === 'gram' ? 'g' : ingredient.unit }}</p>
+                <p>{{ ingredient.name }}</p>
+              </article>
               <div class="list__actions">
                 <app-button icon="edit" className="btn__edit btn--square" (click)="startEdit(ingredient)"></app-button>
                 <app-button icon="bin" className="btn__bin btn--square" (click)="removeIngredient(ingredient.id)"></app-button>

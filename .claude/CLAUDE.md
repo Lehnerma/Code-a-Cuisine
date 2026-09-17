@@ -1,6 +1,8 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+## Important
+
+- ** Starte immer im manual mode!!*
 
 ## Mentor-Modus (verbindlich)
 
@@ -48,7 +50,7 @@ Angular 22 standalone app (no NgModules) with Vitest as the unit-test runner (`@
 - **Shared components** (`src/app/shared/components/`): presentational/reusable pieces (`dropdown-component`, `main-header`, `main-hero`, `surveys-list`). Each is a standalone `Component` with its own `.ts` / `.html` / `.scss` triplet, using `input()` and `signal()` (no `@Input()` decorators, no `NgModule`).
 - **Services** (`src/app/shared/services/`): `SupabaseService` is the single Supabase client wrapper (`providedIn: 'root'`). It owns two realtime `signal()`s — `surveyList` and `surveyCategorieList` — populated on construction via `getAllSurveys()`. Components `inject()` this service directly rather than going through a separate domain/state service (see the 2026-08-18 tagebuch entry for a discussed-but-not-yet-implemented split into a dedicated `SurveyService`/`resource()` pattern).
 - **Interfaces** (`src/app/shared/interfaces/`): plain TS interfaces mirroring Supabase table shapes, e.g. `SurveyInterface` for the `surveys` table.
-- **Environments** (`src/environments/`): `environment.ts` / `environment.development.ts` hold the Supabase URL and *publishable* (anon-equivalent) key — swapped via `fileReplacements` in `angular.json` for the `development` build configuration.
+- **Environments** (`src/environments/`): `environment.ts` / `environment.development.ts` hold the Supabase URL and _publishable_ (anon-equivalent) key — swapped via `fileReplacements` in `angular.json` for the `development` build configuration.
 - **Styles** (`src/styles/`): global SCSS split into `abstracts/` (variables, functions, mixins — import these rather than duplicating tokens), `base/` (reset, typography, fonts, animations), `layout/`, `components/`, and `pages/`, aggregated through per-folder `_index.scss` partials and pulled into `src/styles.scss`. Component-local styles stay in each component's own `.scss` file.
 
 ## Code-Standards

@@ -54,15 +54,19 @@
   @include f-text(clamp(rem(16), 3vw, rem(18)), $green-dark, 500);
   display: grid;
   gap: 6px;
-
-  padding-left: 20px;
+  padding-left: 16px;
 
   &__element {
     list-style: disc;
 
+    :hover {
+      background-color: $creme-main;
+      border-radius: 8px;
+    }
+
     &--container {
       display: grid;
-      grid-template-columns: auto 1fr auto;
+      grid-template-columns: 1fr auto;
       align-items: center;
       gap: 16px;
     }
@@ -77,10 +81,22 @@
     display: flex;
     gap: 16px;
   }
+
+  &__name {
+    overflow-wrap: break-word;
+    word-break: break-all;
+  }
 }
 
 .greenbg {
   background-color: $green-light-bg;
   border-radius: 20px;
-  padding: 24px 20px;
+  padding: clamp(16px, 3vw, 24px);
+}
+
+.flex-rewrap {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  gap: clamp(8px, 2vw, 16px);
+  min-width: 40px;
 }
