@@ -3,10 +3,11 @@ import { DropdownComponent } from '../dropdown-component/dropdown-component';
 import { Button } from '../button/button';
 import { IngredientService } from '../../services/ingredient-service';
 import { Ingredient } from '../../interfaces/ingredient';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 /** Form for collecting ingredients, with inline edit/delete on the list below it. */
 @Component({
-  imports: [DropdownComponent, Button],
+  imports: [DropdownComponent, Button, ReactiveFormsModule],
   selector: 'app-generate-form',
   styleUrl: './generate-form.scss',
   templateUrl: './generate-form.html',
@@ -18,11 +19,8 @@ import { Ingredient } from '../../interfaces/ingredient';
 export class GenerateForm {
   private ingredientService = inject(IngredientService);
   private elementRef = inject(ElementRef);
-
+  private fb = inject(FormBuilder);
   ingredients = this.ingredientService.ingredients;
-
-  name = signal('');
-  servingSize = signal('');
   unit = signal<string | null>(null);
 
   editingId = signal<string | null>(null);
@@ -30,23 +28,25 @@ export class GenerateForm {
   editServingSize = signal('');
   editUnit = signal<string | null>(null);
 
-  // todo validation for the serving to only numbers
-  canAdd = computed(() => this.name().trim().length > 0 && this.servingSize().trim().length > 0);
   canSave = computed(() => this.editName().trim().length > 0 && this.editServingSize().trim().length > 0);
+
+  ingredientForm = this.fb.nonNullable.group({
+    ingredientName: ['', [Validators.required, Validators.maxLength(30)]],
+    servingSize: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
+  });
 
   /**
    * Adds a new ingredient from the form fields and resets them.
    */
   addIngredient(): void {
-    if (!this.canAdd()) return;
+    if (!this.ingredientForm.valid) return;
+    const { ingredientName, servingSize } = this.ingredientForm.getRawValue();
     this.ingredientService.add({
-      name: this.name().trim(),
-      servingSize: this.servingSize().trim(),
+      name: ingredientName.trim(),
+      servingSize: servingSize.trim(),
       unit: this.unit() ?? 'gram',
     });
-    this.name.set('');
-    this.servingSize.set('');
-    this.unit.set(null);
+    this.ingredientForm.reset();
   }
 
   /**
