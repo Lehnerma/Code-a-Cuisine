@@ -16,7 +16,11 @@
 
 .legend {
   @include f-text(rem(20), $green-dark, 600);
-  margin-bottom: 16px;
+  text-align: center;
+
+  &--margin {
+    margin-bottom: 16px;
+  }
 }
 
 .chip-group {

@@ -36,6 +36,26 @@ export class GenerateForm {
   });
 
   /**
+   * Returns the error message for the ingredient name field, or null once it's valid.
+   */
+  ingredientNameError(): string | null {
+    const control = this.ingredientForm.controls.ingredientName;
+    if (!control.invalid || !control.touched) return null;
+    if (control.errors?.['required']) return 'Enter an ingredient name';
+    return 'Keep it under 30 characters';
+  }
+
+  /**
+   * Returns the error message for the serving size field, or null once it's valid.
+   */
+  servingSizeError(): string | null {
+    const control = this.ingredientForm.controls.servingSize;
+    if (!control.invalid || !control.touched) return null;
+    if (control.errors?.['required']) return 'Enter a serving size';
+    return 'Use numbers only';
+  }
+
+  /**
    * Adds a new ingredient from the form fields and resets them.
    */
   addIngredient(): void {

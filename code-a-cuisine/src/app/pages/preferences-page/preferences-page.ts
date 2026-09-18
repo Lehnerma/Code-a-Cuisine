@@ -3,13 +3,7 @@ import { MainHeader } from '../../components/main-header/main-header';
 import { Stepper } from '../../components/stepper/stepper';
 import { Chip } from '../../components/chip/chip';
 import { Button } from '../../components/button/button';
-
-/** Option shown as a selectable chip within a preferences group. */
-interface ChipOption {
-  value: string;
-  label: string;
-  caption?: string;
-}
+import { ChipOption } from '../../interfaces/chip-option';
 
 @Component({
   imports: [MainHeader, Stepper, Chip, Button],

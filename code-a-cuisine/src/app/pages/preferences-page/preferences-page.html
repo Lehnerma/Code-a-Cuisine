@@ -1,4 +1,3 @@
-<!-- <app-body-wrapper class="body"> -->
 <div class="body">
   <main-header backLink="/generate-recipe" backLinkName="Ingredients"></main-header>
   <main class="preferences">
@@ -11,7 +10,7 @@
         </fieldset>
 
         <fieldset class="form__fieldset fieldset">
-          <legend class="legend">How many are coocking?</legend>
+          <legend class="legend legend--margin">How many are cooking?</legend>
           <app-stepper class="form__stepper" [(value)]="persons" [min]="1" [max]="4" label="Person" />
         </fieldset>
       </article>
@@ -19,8 +18,8 @@
       <article class="greenbg form__preferences">
         <fieldset class="form__fieldset fieldset">
           <div class="legend-container">
-            <img src="/assets/icons/schedule.png" alt="watch" />
-            <legend class="legend">Coocking time</legend>
+            <img src="/assets/icons/schedule.png" alt="watch" class="legend--icon" />
+            <legend class="legend legend--margin">Coocking time</legend>
           </div>
           <section class="chip-group">
             @for (opt of cookingTimeOptions; track opt.value) {
@@ -36,7 +35,7 @@
 
         <fieldset class="form__fieldset fieldset">
           <div class="legend-container">
-            <img src="/assets/icons/public.png" alt="world" />
+            <img src="/assets/icons/public.png" alt="world" class="legend--icon" />
             <legend class="legend">Cousine</legend>
           </div>
           <section class="chip-group">
@@ -48,7 +47,7 @@
 
         <fieldset class="form__fieldset fieldset">
           <div class="legend-container">
-            <img src="/assets/icons/fork_spoon.png" alt="fork and spoon" />
+            <img src="/assets/icons/fork_spoon.png" alt="fork and spoon" class="legend--icon" />
             <legend class="legend">Diet preferences</legend>
           </div>
           <section class="chip-group">

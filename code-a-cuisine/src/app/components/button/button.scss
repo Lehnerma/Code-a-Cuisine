@@ -88,9 +88,3 @@
     }
   }
 }
-
-.btn--square {
-  @include flex-center;
-  aspect-ratio: 1/1;
-  height: 28px;
-}

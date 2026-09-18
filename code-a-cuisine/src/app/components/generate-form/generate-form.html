@@ -3,13 +3,16 @@
     <fieldset class="fieldset fieldset--ingredient">
       <label for="ingredient" class="fieldset__label">Ingredient</label>
       <input type="text" id="ingredient" class="fieldset__input" formControlName="ingredientName" />
+      @if (ingredientNameError(); as message) {
+        <p class="fieldset__error">{{ message }}</p>
+      }
     </fieldset>
 
     <fieldset class="fieldset">
       <label for="serving_size" class="fieldset__label">Serving size</label>
 
       <section class="fieldset--row">
-        <input type="text" id="serving_size" class="fieldset__input input-sm" formControlName="servingSize" />
+        <input type="text" id="serving_size" class="fieldset__input input-sm" formControlName="servingSize" placeholder="100" />
         <app-dropdown-component className="fieldset__dropdown" [(selectedValue)]="unit"></app-dropdown-component>
         <app-button
           icon="add"
@@ -19,6 +22,9 @@
           (click)="addIngredient()"
         ></app-button>
       </section>
+      @if (servingSizeError(); as message) {
+        <p class="fieldset__error">{{ message }}</p>
+      }
     </fieldset>
   </form>
 

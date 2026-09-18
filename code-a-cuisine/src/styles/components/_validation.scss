@@ -1,1 +1,15 @@
 @use '../abstracts' as *;
+
+.fieldset {
+  &__input.ng-invalid.ng-touched {
+    outline: solid 2px $paprika;
+  }
+
+  &__error {
+    @include f-text(rem(16), $paprika, 400);
+    margin: 0;
+
+    margin-top: -14px;
+    margin-left: 12px;
+  }
+}

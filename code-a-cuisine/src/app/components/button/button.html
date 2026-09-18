@@ -1,5 +1,13 @@
 @if (tag() === 'a') {
-  <a class="btn" [class]="className()" [attr.data-theme-btn]="theme()" [routerLink]="targetRoute()">
+  <a
+    class="btn"
+    [class]="className()"
+    [class.btn--disabled]="disabled()"
+    [attr.data-theme-btn]="theme()"
+    [attr.aria-disabled]="disabled()"
+    [attr.tabindex]="disabled() ? -1 : 0"
+    [routerLink]="disabled() ? null : targetRoute()"
+  >
     <ng-container *ngTemplateOutlet="content"></ng-container>
   </a>
 } @else {
