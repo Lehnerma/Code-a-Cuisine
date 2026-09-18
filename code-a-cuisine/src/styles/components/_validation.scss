@@ -1,1 +1,14 @@
 @use '../abstracts' as *;
+
+.fieldset {
+  &__input.ng-invalid.ng-touched {
+    outline: solid 2px $paprika;
+  }
+
+  &__error {
+    @include f-text(rem(13), $paprika, 500);
+    margin: 0;
+    // pulls the message closer than the fieldset's own row gap allows
+    margin-top: -4px;
+  }
+}
