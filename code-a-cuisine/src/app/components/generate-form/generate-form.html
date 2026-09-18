@@ -3,6 +3,9 @@
     <fieldset class="fieldset fieldset--ingredient">
       <label for="ingredient" class="fieldset__label">Ingredient</label>
       <input type="text" id="ingredient" class="fieldset__input" formControlName="ingredientName" />
+      @if (ingredientNameError(); as message) {
+        <p class="fieldset__error">{{ message }}</p>
+      }
     </fieldset>
 
     <fieldset class="fieldset">
@@ -19,6 +22,9 @@
           (click)="addIngredient()"
         ></app-button>
       </section>
+      @if (servingSizeError(); as message) {
+        <p class="fieldset__error">{{ message }}</p>
+      }
     </fieldset>
   </form>
 
