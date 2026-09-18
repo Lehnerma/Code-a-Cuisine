@@ -1,0 +1,25 @@
+@use '../../../styles/abstracts' as *;
+
+.generate {
+  display: grid;
+  gap: clamp(40px, 10vw, 64px);
+  padding-top: 24px;
+
+  &__title {
+    @include f-text(clamp(rem(32), 8vw, rem(54)), $green-middle, 600);
+  }
+
+  &__description {
+    @include f-text(clamp(rem(18), 4vw, rem(24)), $green-dark, 600);
+  }
+
+  &__container {
+    display: grid;
+    justify-items: center;
+    gap: 24px;
+  }
+}
+
+.next-button {
+  justify-self: center;
+}

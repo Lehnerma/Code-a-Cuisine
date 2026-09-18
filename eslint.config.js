@@ -8,19 +8,10 @@ const unicorn = require('eslint-plugin-unicorn').default;
 const prettierConfig = require('eslint-config-prettier');
 
 module.exports = defineConfig([
-  globalIgnores([
-    '**/node_modules/**',
-    '**/dist/**',
-    'code-a-cuisine/.angular/**',
-  ]),
+  globalIgnores(['**/node_modules/**', '**/dist/**', 'code-a-cuisine/.angular/**', '.claude/worktrees/**']),
   {
     files: ['**/*.ts'],
-    extends: [
-      eslint.configs.recommended,
-      tseslint.configs.recommended,
-      angular.configs.tsRecommended,
-      prettierConfig,
-    ],
+    extends: [eslint.configs.recommended, tseslint.configs.recommended, angular.configs.tsRecommended, prettierConfig],
     plugins: {
       jsdoc,
       unicorn,

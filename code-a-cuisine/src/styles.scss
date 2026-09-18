@@ -2,3 +2,7 @@
 @use 'styles/base';
 @use 'styles/layout';
 @use 'styles/components';
+
+body {
+  margin: 0 auto;
+}

@@ -1,0 +1,14 @@
+@use '../../../styles/abstracts' as *;
+
+:host {
+  --pd-top: 16px;
+  --pd-side: clamp(16px, 5vw, 68px);
+}
+
+.body-wrapper {
+  padding-top: var(--pd-top);
+  padding-left: var(--pd-side);
+  padding-right: var(--pd-side);
+  max-width: $max-dp-width;
+  margin: 0 auto;
+}

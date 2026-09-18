@@ -1,0 +1,65 @@
+<!-- <app-body-wrapper class="body"> -->
+<div class="body">
+  <main-header backLink="/generate-recipe" backLinkName="Ingredients"></main-header>
+  <main class="preferences">
+    <h1 class="form__title">Choose your preferences</h1>
+    <form class="form">
+      <article class="form__portions">
+        <fieldset class="form__fieldset fieldset">
+          <legend class="legend">How many portions you need?</legend>
+          <app-stepper class="form__stepper" [(value)]="portions" [min]="1" [max]="12" label="Portions" />
+        </fieldset>
+
+        <fieldset class="form__fieldset fieldset">
+          <legend class="legend">How many are coocking?</legend>
+          <app-stepper class="form__stepper" [(value)]="persons" [min]="1" [max]="4" label="Person" />
+        </fieldset>
+      </article>
+
+      <article class="greenbg form__preferences">
+        <fieldset class="form__fieldset fieldset">
+          <div class="legend-container">
+            <img src="/assets/icons/schedule.png" alt="watch" />
+            <legend class="legend">Coocking time</legend>
+          </div>
+          <section class="chip-group">
+            @for (opt of cookingTimeOptions; track opt.value) {
+              <app-chip
+                [label]="opt.label"
+                [caption]="opt.caption"
+                [checked]="cookingTime().includes(opt.value)"
+                (toggled)="toggleSelection(cookingTime, opt.value)"
+              />
+            }
+          </section>
+        </fieldset>
+
+        <fieldset class="form__fieldset fieldset">
+          <div class="legend-container">
+            <img src="/assets/icons/public.png" alt="world" />
+            <legend class="legend">Cousine</legend>
+          </div>
+          <section class="chip-group">
+            @for (opt of cuisineOptions; track opt.value) {
+              <app-chip [label]="opt.label" [checked]="cuisine().includes(opt.value)" (toggled)="toggleSelection(cuisine, opt.value)" />
+            }
+          </section>
+        </fieldset>
+
+        <fieldset class="form__fieldset fieldset">
+          <div class="legend-container">
+            <img src="/assets/icons/fork_spoon.png" alt="fork and spoon" />
+            <legend class="legend">Diet preferences</legend>
+          </div>
+          <section class="chip-group">
+            @for (opt of dietOptions; track opt.value) {
+              <app-chip [label]="opt.label" [checked]="diet().includes(opt.value)" (toggled)="toggleSelection(diet, opt.value)" />
+            }
+          </section>
+        </fieldset>
+      </article>
+      <app-button className="btn__primary" class="form__submit" theme="green" btnType="submit">Generate recipe</app-button>
+    </form>
+  </main>
+</div>
+<!-- </app-body-wrapper> -->

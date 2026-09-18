@@ -1,0 +1,67 @@
+<div class="body--grid">
+  <form class="form greenbg" [formGroup]="ingredientForm">
+    <fieldset class="fieldset fieldset--ingredient">
+      <label for="ingredient" class="fieldset__label">Ingredient</label>
+      <input type="text" id="ingredient" class="fieldset__input" formControlName="ingredientName" />
+    </fieldset>
+
+    <fieldset class="fieldset">
+      <label for="serving_size" class="fieldset__label">Serving size</label>
+
+      <section class="fieldset--row">
+        <input type="text" id="serving_size" class="fieldset__input input-sm" formControlName="servingSize" />
+        <app-dropdown-component className="fieldset__dropdown" [(selectedValue)]="unit"></app-dropdown-component>
+        <app-button
+          icon="add"
+          theme="creme"
+          className=" btn__add btn--square"
+          [disabled]="!ingredientForm.valid"
+          (click)="addIngredient()"
+        ></app-button>
+      </section>
+    </fieldset>
+  </form>
+
+  <article class="greenbg form__list">
+    <h2 class="form__list--title">List of your Ingredients</h2>
+    <ul class="list">
+      @for (ingredient of ingredients(); track ingredient.id) {
+        <li class="list__element" [attr.data-ingredient-id]="ingredient.id">
+          <div class="list__element--container">
+            @if (editingId() === ingredient.id) {
+              <article class="flex-rewrap">
+                <section class="fieldset--row">
+                  <input
+                    #editServingSizeInput
+                    type="text"
+                    class="fieldset__input input-sm"
+                    [value]="editServingSize()"
+                    (input)="editServingSize.set(editServingSizeInput.value)"
+                    (keydown.enter)="saveEdit()"
+                  />
+                  <app-dropdown-component className="fieldset__dropdown" [(selectedValue)]="editUnit"></app-dropdown-component>
+                </section>
+                <p>{{ ingredient.name }}</p>
+              </article>
+              <div class="list__actions">
+                <app-button icon="check" className="btn__edit btn--square" [disabled]="!canSave()" (click)="saveEdit()"></app-button>
+                <app-button icon="bin" className="btn__bin btn--square" (click)="removeIngredient(ingredient.id)"></app-button>
+              </div>
+            } @else {
+              <article class="flex-rewrap">
+                <p>{{ ingredient.servingSize }}{{ ingredient.unit === 'gram' ? 'g' : ingredient.unit }}</p>
+                <p>{{ ingredient.name }}</p>
+              </article>
+              <div class="list__actions">
+                <app-button icon="edit" className="btn__edit btn--square" (click)="startEdit(ingredient)"></app-button>
+                <app-button icon="bin" className="btn__bin btn--square" (click)="removeIngredient(ingredient.id)"></app-button>
+              </div>
+            }
+          </div>
+        </li>
+      } @empty {
+        <li class="list__element list__element--empty">No ingredients yet</li>
+      }
+    </ul>
+  </article>
+</div>

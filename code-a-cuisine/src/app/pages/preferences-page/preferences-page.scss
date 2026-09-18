@@ -1,0 +1,83 @@
+@use '../../../styles/abstracts' as *;
+
+.body {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 40px;
+}
+
+.preferences {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  justify-self: center;
+  gap: clamp(16px, 3vw, 56px);
+  max-width: 720px;
+}
+
+.legend {
+  @include f-text(rem(20), $green-dark, 600);
+  margin-bottom: 16px;
+}
+
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(8px, 1.5vw, 12px);
+}
+
+.greenbg {
+  background-color: $green-light-bg;
+  border-radius: 20px;
+  padding: 24px 20px;
+}
+
+.legend-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.form {
+  display: grid;
+  gap: 32px;
+  margin-bottom: 16px;
+
+  &__title {
+    @include f-text(rem(28), $green-dark, 600);
+    text-align: center;
+  }
+
+  &__portions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), auto));
+    gap: 24px;
+    justify-content: start;
+    @include respond-to(680px) {
+      justify-content: space-between;
+    }
+  }
+
+  &__stepper {
+    justify-self: start;
+    align-self: end;
+    @include respond-to(680px) {
+      justify-self: center;
+    }
+  }
+
+  &__preferences {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__fieldset {
+    display: grid;
+    justify-items: start;
+    gap: 24px;
+  }
+
+  &__submit {
+    justify-self: center;
+  }
+}

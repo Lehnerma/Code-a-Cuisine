@@ -1,1 +1,96 @@
 @use '../../../styles/abstracts' as *;
+
+.btn {
+  &__add {
+    @include flex-center;
+    padding: 9px;
+    border-radius: 5px;
+    &--icon {
+      fill: $green-dark;
+      width: 18px;
+      height: 18px;
+    }
+
+    &:hover {
+      background-color: $creme-main;
+      .add-icon {
+        fill: $green-olive;
+      }
+    }
+    &:active {
+      background-color: transparent;
+      .add-icon {
+        fill: $green-recipe;
+      }
+    }
+  }
+
+  &__bin {
+    padding: 3px 4px;
+    border-radius: 2px;
+
+    &--icon {
+      fill: $green-dark;
+      width: 19px;
+      height: 19px;
+    }
+
+    &:hover {
+      background-color: $green-main-04;
+    }
+
+    &:active {
+      .bin-icon {
+        fill: white;
+      }
+    }
+  }
+
+  &__check {
+    padding: 3px 4px;
+    border-radius: 2px;
+
+    &--icon {
+      fill: $green-dark;
+      width: 14px;
+      height: 11px;
+    }
+
+    &:hover {
+      background-color: $creme-main;
+    }
+
+    &:active {
+      .check-icon {
+        fill: $green-recipe;
+      }
+    }
+  }
+
+  &__edit {
+    padding: 3px 4px;
+    border-radius: 4px;
+
+    &--icon {
+      fill: $green-dark;
+      width: 13px;
+      height: 14px;
+    }
+
+    &:hover {
+      background-color: $green-main-04;
+    }
+
+    &:active {
+      .edit-icon {
+        fill: $creme-white;
+      }
+    }
+  }
+}
+
+.btn--square {
+  @include flex-center;
+  aspect-ratio: 1/1;
+  height: 28px;
+}
