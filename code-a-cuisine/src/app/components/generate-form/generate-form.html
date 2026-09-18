@@ -12,7 +12,7 @@
       <label for="serving_size" class="fieldset__label">Serving size</label>
 
       <section class="fieldset--row">
-        <input type="text" id="serving_size" class="fieldset__input input-sm" formControlName="servingSize" />
+        <input type="text" id="serving_size" class="fieldset__input input-sm" formControlName="servingSize" placeholder="100" />
         <app-dropdown-component className="fieldset__dropdown" [(selectedValue)]="unit"></app-dropdown-component>
         <app-button
           icon="add"

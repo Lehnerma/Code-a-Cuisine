@@ -1,8 +1,8 @@
-import { Injectable, signal } from '@angular/core';
+import { Service, signal } from '@angular/core';
 import { Ingredient } from '../interfaces/ingredient';
 
 /** Holds the ingredients collected on the generate-recipe form. */
-@Injectable({ providedIn: 'root' })
+@Service()
 export class IngredientService {
   ingredients = signal<Ingredient[]>([]);
 

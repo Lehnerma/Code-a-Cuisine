@@ -32,7 +32,8 @@
     transition:
       background-color $animation-time ease-in-out,
       font-weight $animation-time ease-in-out;
-    &:hover {
+
+    &:hover:not(.btn--disabled) {
       background-color: (var(--primary-bg-hover));
       font-weight: 700;
     }
@@ -57,5 +58,16 @@
       gap: 10px;
       padding: 16px 26px;
     }
+  }
+
+  &--square {
+    @include flex-center;
+    aspect-ratio: 1/1;
+    height: 28px;
+  }
+
+  &--disabled {
+    background-color: grey;
+    cursor: not-allowed;
   }
 }
