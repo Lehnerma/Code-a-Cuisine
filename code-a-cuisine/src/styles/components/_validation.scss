@@ -6,9 +6,10 @@
   }
 
   &__error {
-    @include f-text(rem(13), $paprika, 500);
+    @include f-text(rem(16), $paprika, 400);
     margin: 0;
-    // pulls the message closer than the fieldset's own row gap allows
-    margin-top: -4px;
+
+    margin-top: -14px;
+    margin-left: 12px;
   }
 }
