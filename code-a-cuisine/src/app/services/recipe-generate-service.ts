@@ -1,10 +1,10 @@
 import { resource, Service, signal } from '@angular/core';
-import { DishPreferencesInterface } from '../interfaces/dish-preferences-interface';
+import { DishPreferencesInterface } from '../interfaces/dish-preferences';
 
 @Service()
 export class RecipeGenerateService {
   dishSettings = signal<DishPreferencesInterface | ''>('');
-  n8nURLtest='https://linux.tail6bc478.ts.net/webhook-test/ingredients';
+  n8nURLtest = 'https://linux.tail6bc478.ts.net/webhook-test/ingredients';
 
   dishResource = resource({
     params: () => this.dishSettings(),
@@ -22,5 +22,4 @@ export class RecipeGenerateService {
       return result.json();
     },
   });
-
 }

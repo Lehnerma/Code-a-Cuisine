@@ -2,6 +2,6 @@
 export interface Ingredient {
   id: string;
   name: string;
-  servingSize: string;
+  serving_size: string;
   unit: string;
 }

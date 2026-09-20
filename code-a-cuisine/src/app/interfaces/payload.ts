@@ -1,9 +1,9 @@
 import { Ingredient } from './ingredient';
-export interface PayloadInterface {
+export interface Payload {
   ingredients: Omit<Ingredient, 'id'>[];
   portions: number;
   persons: number;
-  cookingTime: number;
-  cuisine: string;
-  diet: string;
+  cooking_time: number;
+  cuisine: string[];
+  diet: string[];
 }
