@@ -63,7 +63,7 @@ export class GenerateForm {
     const { ingredientName, servingSize } = this.ingredientForm.getRawValue();
     this.ingredientService.add({
       name: ingredientName.trim(),
-      servingSize: servingSize.trim(),
+      serving_size: servingSize.trim(),
       unit: this.unit() ?? 'gram',
     });
     this.ingredientForm.reset();
@@ -75,7 +75,7 @@ export class GenerateForm {
   startEdit(ingredient: Ingredient): void {
     this.editingId.set(ingredient.id);
     this.editName.set(ingredient.name);
-    this.editServingSize.set(ingredient.servingSize);
+    this.editServingSize.set(ingredient.serving_size);
     this.editUnit.set(ingredient.unit);
   }
 
@@ -87,7 +87,7 @@ export class GenerateForm {
     if (!id || !this.canSave()) return;
     this.ingredientService.update(id, {
       name: this.editName().trim(),
-      servingSize: this.editServingSize().trim(),
+      serving_size: this.editServingSize().trim(),
       unit: this.editUnit() ?? 'gram',
     });
     this.editingId.set(null);

@@ -6,7 +6,13 @@
       <p class="generate__description">Got random stuff in your kitchen? Pop it in—we’ve got the perfect recipe waiting.</p>
     </section>
     <app-generate-form></app-generate-form>
-    <app-button className="btn__primary" class="next-button" theme="green" tag="a" targetRoute="/preferences" [disabled]="isNextDisabled()"
+    <app-button
+      className="btn__primary"
+      class="next-button"
+      theme="green"
+      tag="a"
+      targetRoute="/generate-recipe/preferences"
+      [disabled]="isNextDisabled()"
       >Next step</app-button
     >
   </main>

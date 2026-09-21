@@ -38,6 +38,7 @@ export class RecipeGenerateService {
    * Submits the current ingredient and preference settings to generate a recipe.
    */
   submit(): void {
+    console.log('test submit');
     this.dishSettings.set({
       ingredients: this.ingredientService.ingredients().map(({ name, serving_size, unit }) => ({ name, serving_size, unit })),
       portions: this.preferencesService.portions(),
@@ -46,6 +47,7 @@ export class RecipeGenerateService {
       cuisine: this.preferencesService.cuisine(),
       diet: this.preferencesService.diet(),
     });
+    console.log(this.dishSettings());
   }
 
   /** Resets the ingredients, preferences, and current recipe-generation request. */

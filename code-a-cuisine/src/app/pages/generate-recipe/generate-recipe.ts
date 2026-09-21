@@ -14,5 +14,5 @@ export class GenerateRecipe {
   private ingredientService = inject(IngredientService);
 
   ingredientList = this.ingredientService.ingredients;
-  isNextDisabled = computed(() => this.ingredientService.ingredients().length === 0);
+  isNextDisabled = computed(() => this.ingredientService.ingredients().length < 1);
 }

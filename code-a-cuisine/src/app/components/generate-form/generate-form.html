@@ -55,7 +55,7 @@
               </div>
             } @else {
               <article class="flex-rewrap">
-                <p>{{ ingredient.servingSize }}{{ ingredient.unit === 'gram' ? 'g' : ingredient.unit }}</p>
+                <p>{{ ingredient.serving_size }}{{ ingredient.unit === 'gram' ? 'g' : ingredient.unit }}</p>
                 <p>{{ ingredient.name }}</p>
               </article>
               <div class="list__actions">
@@ -66,7 +66,7 @@
           </div>
         </li>
       } @empty {
-        <li class="list__element list__element--empty">No ingredients yet</li>
+        <li class="list__element list__element--empty">No ingredients yet. Pleas add min. 2 ingredients.</li>
       }
     </ul>
   </article>

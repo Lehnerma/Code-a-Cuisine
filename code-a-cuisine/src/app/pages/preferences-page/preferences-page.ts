@@ -1,9 +1,12 @@
-import { Component, signal, WritableSignal } from '@angular/core';
+import { Component, inject, WritableSignal } from '@angular/core';
 import { MainHeader } from '../../components/main-header/main-header';
 import { Stepper } from '../../components/stepper/stepper';
 import { Chip } from '../../components/chip/chip';
 import { Button } from '../../components/button/button';
 import { ChipOption } from '../../interfaces/chip-option';
+import { PreferencesService } from '../../services/preferences-service';
+import { RecipeGenerateService } from '../../services/recipe-generate-service';
+import { Router } from '@angular/router';
 
 @Component({
   imports: [MainHeader, Stepper, Chip, Button],
@@ -12,12 +15,9 @@ import { ChipOption } from '../../interfaces/chip-option';
   templateUrl: './preferences-page.html',
 })
 export class PreferencesPage {
-  portions = signal(2);
-  persons = signal(1);
-
-  cooking_time = signal<string[]>([]);
-  cuisine = signal<string[]>([]);
-  diet = signal<string[]>([]);
+  preferencesService = inject(PreferencesService);
+  recipeGenerateService = inject(RecipeGenerateService);
+  router = inject(Router);
 
   cookingTimeOptions: ChipOption[] = [
     { value: 'quick', label: 'Quick', caption: 'up to 20min' },
@@ -47,5 +47,14 @@ export class PreferencesPage {
    */
   toggleSelection(group: WritableSignal<string[]>, value: string): void {
     group.update((selected) => (selected.includes(value) ? selected.filter((item) => item !== value) : [...selected, value]));
+  }
+
+  /**
+   * Submits the two forms
+   */
+  onSubmit(event: SubmitEvent): void {
+    event.preventDefault();
+    this.recipeGenerateService.submit();
+    this.router.navigate(['/recipe-results']);
   }
 }
