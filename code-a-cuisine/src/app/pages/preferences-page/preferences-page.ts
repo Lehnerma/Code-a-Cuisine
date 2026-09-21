@@ -15,7 +15,7 @@ export class PreferencesPage {
   portions = signal(2);
   persons = signal(1);
 
-  cookingTime = signal<string[]>([]);
+  cooking_time = signal<string[]>([]);
   cuisine = signal<string[]>([]);
   diet = signal<string[]>([]);
 
