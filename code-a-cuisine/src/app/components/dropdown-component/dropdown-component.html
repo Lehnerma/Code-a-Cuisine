@@ -8,7 +8,7 @@
     [style.--dropdown-height]="height()"
     type="button"
   >
-    <span class="dropdown__value">{{ displayLabel() }}</span>
+    <span class="dropdown__value text-sm">{{ displayLabel() }}</span>
     <svg [class.is-open]="isOpen()" aria-hidden="true" class="dropdown__icon" fill="none" viewBox="0 0 10 5" xmlns="http://www.w3.org/2000/svg">
       <path d="M5 5L10 0L0 0L5 5Z" />
     </svg>
@@ -19,7 +19,7 @@
         <button
           (click)="selectOption(item)"
           [attr.aria-selected]="selectedValue() === item"
-          class="dropdown__option--btn btn"
+          class="dropdown__option--btn btn text-sm"
           role="option"
           type="button"
         >

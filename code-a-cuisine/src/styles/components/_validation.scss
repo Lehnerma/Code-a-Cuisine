@@ -6,7 +6,8 @@
   }
 
   &__error {
-    @include f-text(rem(16), $paprika, 400);
+    color: $paprika;
+    font-weight: 400;
     margin: 0;
 
     margin-top: -14px;

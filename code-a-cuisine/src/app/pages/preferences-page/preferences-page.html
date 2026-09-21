@@ -1,16 +1,16 @@
 <div class="body">
   <main-header backLink="/generate-recipe" backLinkName="Ingredients"></main-header>
   <main class="preferences">
-    <h1 class="form__title">Choose your preferences</h1>
+    <h1 class="form__title text-xl">Choose your preferences</h1>
     <form class="form" (submit)="onSubmit($event)">
       <article class="form__portions">
         <fieldset class="form__fieldset fieldset">
-          <legend class="legend">How many portions you need?</legend>
+          <legend class="legend text-md">How many portions you need?</legend>
           <app-stepper class="form__stepper" [(value)]="preferencesService.portions" [min]="1" [max]="12" label="Portions" />
         </fieldset>
 
         <fieldset class="form__fieldset fieldset">
-          <legend class="legend legend--margin">How many are cooking?</legend>
+          <legend class="legend legend--margin text-md">How many are cooking?</legend>
           <app-stepper class="form__stepper" [(value)]="preferencesService.persons" [min]="1" [max]="4" label="Person" />
         </fieldset>
       </article>
@@ -18,8 +18,8 @@
       <article class="greenbg form__preferences">
         <fieldset class="form__fieldset fieldset">
           <div class="legend-container">
-            <img src="/assets/icons/schedule.png" alt="" class="legend--icon" />
-            <legend class="legend legend--margin">Cooking time</legend>
+            <img src="/assets/icons/schedule.png" alt="watch" class="legend--icon" />
+            <legend class="legend legend--margin text-md">Coocking time</legend>
           </div>
           <section class="chip-group">
             @for (opt of cookingTimeOptions; track opt.value) {
@@ -35,8 +35,8 @@
 
         <fieldset class="form__fieldset fieldset">
           <div class="legend-container">
-            <img src="/assets/icons/public.png" alt="" class="legend--icon" />
-            <legend class="legend">Cuisine</legend>
+            <img src="/assets/icons/public.png" alt="world" class="legend--icon" />
+            <legend class="legend text-md">Cuisine</legend>
           </div>
           <section class="chip-group">
             @for (opt of cuisineOptions; track opt.value) {
@@ -51,8 +51,8 @@
 
         <fieldset class="form__fieldset fieldset">
           <div class="legend-container">
-            <img src="/assets/icons/fork_spoon.png" alt="" class="legend--icon" />
-            <legend class="legend">Diet preferences</legend>
+            <img src="/assets/icons/fork_spoon.png" alt="fork and spoon" class="legend--icon" />
+            <legend class="legend text-md">Diet preferences</legend>
           </div>
           <section class="chip-group">
             @for (opt of dietOptions; track opt.value) {
@@ -65,7 +65,7 @@
           </section>
         </fieldset>
       </article>
-      <app-button className="btn__primary" class="form__submit" theme="green" btnType="submit">Generate recipe</app-button>
+      <app-button className="btn__primary text-lg" class="form__submit" theme="green" btnType="submit">Generate recipe</app-button>
     </form>
   </main>
 </div>

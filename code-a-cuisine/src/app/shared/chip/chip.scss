@@ -29,7 +29,8 @@
   }
 
   &__label {
-    @include f-text(rem(20), $green-dark, 500);
+    color: $green-dark;
+    font-weight: 500;
     padding: 8px 18px;
     border-radius: 999px;
     background-color: $creme-main;
@@ -43,6 +44,7 @@
   }
 
   &__caption {
-    @include f-text(rem(14), $green-dark, 400);
+    color: $green-dark;
+    font-weight: 400;
   }
 }

@@ -1,0 +1,49 @@
+@use '../../../styles/abstracts' as *;
+
+.card {
+  background-color: $green-cremy;
+  display: grid;
+  gap: 32px;
+  padding: 32px 24px;
+  border-radius: 20px;
+
+  &__container {
+    display: grid;
+    gap: 16px;
+  }
+
+  &__header {
+    display: flex;
+    gap: 16px;
+
+    &--icon {
+      width: 40px;
+    }
+
+    &--title {
+      color: $green-middle;
+      font-weight: 600;
+    }
+  }
+
+  &__time {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &--text {
+      color: $green-olive;
+      font-weight: 500;
+    }
+
+    &--icon {
+      width: 20px;
+      height: 20px;
+      fill: $green-olive;
+    }
+  }
+
+  &__footer {
+    max-width: fit-content;
+  }
+}

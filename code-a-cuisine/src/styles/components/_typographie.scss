@@ -1,1 +1,48 @@
 @use '../abstracts' as *;
+
+// Fließtext (f-txt)
+.text-sm {
+  font-family: $f-txt;
+  font-size: clamp(rem(14), 2vw, rem(16));
+}
+
+.text-base {
+  font-family: $f-txt;
+  font-size: clamp(rem(16), 2.5vw, rem(18));
+}
+
+.text-md {
+  font-family: $f-txt;
+  font-size: clamp(rem(18), 3.5vw, rem(22));
+}
+
+.text-lg {
+  font-family: $f-txt;
+  font-size: clamp(rem(22), 4.5vw, rem(28));
+}
+
+.text-xl {
+  font-family: $f-txt;
+  font-size: clamp(rem(28), 5.5vw, rem(36));
+}
+
+.text-display {
+  font-family: $f-txt;
+  font-size: clamp(rem(36), 7vw, rem(54));
+}
+
+// Überschriften (f-title)
+.title-md {
+  font-family: $f-title;
+  font-size: clamp(rem(36), 5vw, rem(48));
+}
+
+.title-lg {
+  font-family: $f-title;
+  font-size: clamp(rem(48), 8vw, rem(72));
+}
+
+.title-xl {
+  font-family: $f-title;
+  font-size: clamp(rem(72), 10vw, rem(104));
+}

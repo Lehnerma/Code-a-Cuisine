@@ -27,7 +27,8 @@
   &__value {
     @include flex-center;
     gap: 8px;
-    @include f-text(rem(20), $green-dark, 500);
+    color: $green-dark;
+    font-weight: 500;
 
     &--numb {
       background-color: $green-main-02;

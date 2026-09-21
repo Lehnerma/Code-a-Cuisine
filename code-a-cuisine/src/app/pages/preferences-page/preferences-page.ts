@@ -1,7 +1,7 @@
 import { Component, inject, WritableSignal } from '@angular/core';
 import { MainHeader } from '../../components/main-header/main-header';
 import { Stepper } from '../../components/stepper/stepper';
-import { Chip } from '../../components/chip/chip';
+import { Chip } from '../../shared/chip/chip';
 import { Button } from '../../components/button/button';
 import { ChipOption } from '../../interfaces/chip-option';
 import { PreferencesService } from '../../services/preferences-service';
