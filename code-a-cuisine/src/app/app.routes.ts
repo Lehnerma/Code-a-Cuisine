@@ -11,6 +11,6 @@ export const routes: Routes = [
   { path: '', component: LandingPage },
   { path: 'generate-recipe', component: GenerateRecipe },
   { path: 'generate-recipe/preferences', component: PreferencesPage, canActivate: [ingredientsGuard] },
-  { path: 'recipe-results', component: RecipeResults, canActivate: [dishSettingsGuard] },
+  { path: 'recipe-results', component: RecipeResults }, //canActivate: [dishSettingsGuard]
   { path: 'recipe/:id', component: Recipe },
 ];
