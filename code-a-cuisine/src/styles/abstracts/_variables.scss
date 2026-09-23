@@ -14,6 +14,7 @@ $green-dark: rgba(16, 49, 11);
 $green-dark-04: rgba($green-dark, 0.4);
 $green-white: rgba(231, 236, 231);
 $green-cremy: rgba(215, 223, 215);
+$green-cremy09: rgba($green-cremy, 0.9);
 
 $green-salbei: rgba(196, 208, 196);
 $green-salbei-light: rgba($green-salbei, 0.4);
@@ -52,3 +53,7 @@ $animation-time: 250ms;
 // Fonts
 $f-txt: 'Quicksand', sans-serif;
 $f-title: 'Ubuntu', sans-serif;
+
+// Spacing
+
+$space16-24: clamp(16px, 2vw, 24px);

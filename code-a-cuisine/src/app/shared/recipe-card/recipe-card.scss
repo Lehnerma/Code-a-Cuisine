@@ -7,6 +7,10 @@
   padding: 32px 24px;
   border-radius: 20px;
 
+  &:hover {
+    background-color: $green-cremy09;
+  }
+
   &__container {
     display: grid;
     gap: 16px;
