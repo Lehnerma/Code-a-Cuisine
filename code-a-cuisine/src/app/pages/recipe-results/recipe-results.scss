@@ -27,3 +27,14 @@
     }
   }
 }
+
+.header {
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+  &__img {
+    max-width: 574px;
+    border-radius: 20px;
+  }
+}

@@ -1,6 +1,7 @@
 @use '../abstracts' as *;
 
 // Fließtext (f-txt)
+
 .text-sm {
   font-family: $f-txt;
   font-size: clamp(rem(14), 2vw, rem(16));
