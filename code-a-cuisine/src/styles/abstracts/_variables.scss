@@ -10,6 +10,7 @@ $green-middle: rgba(30, 85, 21);
 $green-olive: $green-main;
 $green-primary-hover: rgba(5, 94, 5);
 $green-recipe: rgba(0, 128, 0);
+$green-recipe-04: rgba($green-recipe, 0.4);
 $green-dark: rgba(16, 49, 11);
 $green-dark-04: rgba($green-dark, 0.4);
 $green-white: rgba(231, 236, 231);
@@ -31,7 +32,9 @@ $creme-secondary-hover: rgba($creme-primary-hover, 0.2);
 $creme-white: rgba(255, 254, 254);
 $white: white;
 
-//paprika (validation)
+$rose: rgba(255, 217, 179);
+$mustard: rgba(207, 215, 0);
+$mustard-03: rgba($mustard, 0.3);
 $paprika: rgba(168, 68, 42);
 
 //BreakPoints

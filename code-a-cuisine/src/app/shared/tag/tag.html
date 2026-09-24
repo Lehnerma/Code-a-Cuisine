@@ -1,0 +1,25 @@
+@if (label() === 'Chef 1') {
+  <span class="tag tag--chef1">
+    <img src="/assets/img/chefs-hat.png" alt="" />
+    <p class="tag__label">{{ label() }}</p>
+  </span>
+} @else if (label() === 'Chef 2') {
+  <span class="tag tag--chef2">
+    <img src="/assets/img/chefs-spoon.png" alt="" />
+    <p class="tag__label">{{ label() }}</p>
+  </span>
+} @else if (label() === 'Chef 3') {
+  <span class="tag tag--chef3">
+    <img src="/assets/img/chefs-apron.png" alt="" />
+    <p class="tag__label">{{ label() }}</p>
+  </span>
+} @else if (label() === 'Chef 4') {
+  <span class="tag tag--chef4">
+    <img src="/assets/img/chefs-hat2.png" alt="" />
+    <p class="tag__label">{{ label() }}</p>
+  </span>
+} @else {
+  <span class="tag tag--tag">
+    <p class="tag__label">{{ label() }}</p>
+  </span>
+}

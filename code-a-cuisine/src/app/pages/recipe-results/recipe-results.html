@@ -27,20 +27,17 @@
       @case ('success') {}
     }
   }
-
   <article class="result">
     <section class="result__header">
-      <div class="header__info">
-        <h1 class="result__header--title text-display">The recipe results</h1>
-        <p class="result__header--description text-sm">
-          We took what you have and let our AI do the thinking. Here are 3 easy recipes you can make right now!
-        </p>
-        <span>
-          <app-chip label="Italien"></app-chip>
-        </span>
-      </div>
+      <h1 class="header__title text-display">The recipe results</h1>
+      <p class="header__description text-sm">We took what you have and let our AI do the thinking. Here are 3 easy recipes you can make right now!</p>
+
       <img class="header__img" src="/assets/img/chatty_cac.png" alt="" />
+      <span class="header__tags">
+        <app-tag label="Italien"></app-tag>
+      </span>
     </section>
+
     <section class="result__recipes">
       <!-- @for (recipe of recipies() ; track $index) {} -->
       <app-recipe-card></app-recipe-card>

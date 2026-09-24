@@ -5,10 +5,10 @@ import { MainHeader } from '../../components/main-header/main-header';
 import { Dialog } from '../../shared/dialog/dialog';
 import { RecipeCard } from '../../shared/recipe-card/recipe-card';
 import { Button } from '../../components/button/button';
-import { Chip } from '../../shared/chip/chip';
+import { Tag } from '../../shared/tag/tag';
 
 @Component({
-  imports: [LoadingSpinner, MainHeader, Dialog, RecipeCard, Button, Chip],
+  imports: [LoadingSpinner, MainHeader, Dialog, RecipeCard, Button, Tag],
   selector: 'app-recipe-results',
   styleUrl: './recipe-results.scss',
   templateUrl: './recipe-results.html',

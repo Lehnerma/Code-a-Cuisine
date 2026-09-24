@@ -16,15 +16,21 @@
 
 .result {
   &__header {
-    &--title {
-      color: $creme-main;
-      font-weight: 600;
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto;
+    grid-template-areas:
+      'title'
+      'img'
+      'description'
+      'tags';
+    @include respond-to(800px) {
+      grid-template-areas:
+        'title img'
+        'description img'
+        'tags img';
     }
-
-    &--description {
-      color: white;
-      font-weight: 400;
-    }
+    gap: $space16-24;
   }
 
   &__recipes {
@@ -35,14 +41,27 @@
 }
 
 .header {
-  &__info {
-    display: flex;
-    flex-direction: column;
-  }
-
   &__img {
     max-width: 574px;
     width: 100%;
     border-radius: 20px;
+    grid-area: img;
+    justify-self: center;
+  }
+
+  &__title {
+    color: $creme-main;
+    font-weight: 600;
+    grid-area: title;
+  }
+
+  &__description {
+    color: white;
+    font-weight: 400;
+    grid-area: description;
+  }
+
+  &__tags {
+    grid-area: tags;
   }
 }
