@@ -1,8 +1,79 @@
 @use '../../../styles/abstracts' as *;
 
 .recipe {
+  display: grid;
+  gap: $space40-48;
+  background-color: $creme-main-02;
+  border-radius: 16px;
+  border: solid 3px $creme-main;
+
   &__details {
     color: $green-middle;
+    padding: 24px;
+    background-color: $creme-main;
+    border-radius: 20px;
+    display: grid;
+    gap: 16px;
+    grid-template-areas:
+      'time'
+      'title'
+      'chefs'
+      'nutrition'
+      'tags';
+    @include respond-to(lg) {
+      grid-template-columns: 2fr 1fr;
+      grid-template-areas:
+        'time time'
+        'title tags'
+        'title nutrition'
+        'chefs nutrition';
+
+      .details__nutrition {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.details {
+  &__title {
+    grid-area: title;
+  }
+
+  &__tags {
+    grid-area: tags;
+    @include flex-center;
+    justify-content: flex-start;
+  }
+
+  &__nutrition {
+    grid-area: nutrition;
+    margin-top: 32px;
+    color: $green-dark;
+    @include f-text(clamp(rem(18), 2.5vw, rem(20)), $green-dark, 600);
+  }
+
+  &__time {
+    grid-area: time;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__chefs {
+    grid-area: chefs;
+    @include flex-center;
+    justify-content: flex-start;
+    gap: 16px;
+  }
+}
+
+.chefs {
+  &__title {
+    display: none;
+    @include respond-to(md) {
+      display: block;
+    }
   }
 }
 
@@ -10,4 +81,17 @@
   &__title {
     @include f-text(rem(18), $green-dark, 500);
   }
+
+  &__data {
+    @include respond-to(md) {
+      font-weight: 500;
+    }
+  }
+}
+
+.tags {
+  @include flex-center;
+  justify-content: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
 }

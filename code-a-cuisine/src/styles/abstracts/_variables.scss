@@ -25,6 +25,7 @@ $creme-main: rgba(250, 240, 230);
 $creme-main-08: rgba($creme-main, 0.8);
 $creme-main-06: rgba($creme-main, 0.6);
 $creme-main-04: rgba($creme-main, 0.4);
+$creme-main-02: rgba($creme-main, 0.2);
 $creme-yellow: rgba(245, 245, 220);
 $creme-primary-hover: rgba(250, 224, 198);
 $creme-secondary-hover: rgba($creme-primary-hover, 0.2);
@@ -60,3 +61,4 @@ $f-title: 'Ubuntu', sans-serif;
 // Spacing
 
 $space16-24: clamp(16px, 2vw, 24px);
+$space40-48: clamp(40px, 4vw, 48px);

@@ -6,7 +6,6 @@
   place-items: center;
   width: 100%;
   max-width: $max-dp-width;
-  min-height: clamp(64px, 12vw, 120px);
   margin-inline: auto;
   padding-block: 12px;
   padding-inline: clamp(72px, 22vw, 320px);
@@ -14,7 +13,7 @@
   border-radius: clamp(12px, 2vw, 24px);
 
   &__title {
-    @include f-title(clamp(#{rem(22)}, 4.5vw, #{rem(48)}), $green-dark, 500);
+    color: $green-middle;
     margin: 0;
     text-align: center;
     text-wrap: balance;

@@ -17,4 +17,20 @@ export class SupabaseService {
     if (error) throw error;
     return data as Recipe;
   }
+
+  /**
+   * Counts the `likes` column of a recipe up or down (never below 0).
+   * @param recipeId Is the UUID of the recipe in the supabase.
+   * @param delta +1 for a like, -1 for taking it back.
+   * @returns The new number of likes.
+   * @throws The Supabase error if reading or updating fails.
+   */
+  async changeLikes(recipeId: string, delta: 1 | -1): Promise<number> {
+    const { data: current, error: readError } = await this.supabase.from('recipes').select('likes').eq('id', recipeId).single();
+    if (readError) throw readError;
+    const likes = Math.max(0, (current.likes ?? 0) + delta);
+    const { error } = await this.supabase.from('recipes').update({ likes }).eq('id', recipeId);
+    if (error) throw error;
+    return likes;
+  }
 }
