@@ -2,8 +2,8 @@
 
 .body {
   padding-top: 16px;
-  padding-left: clamp(8px, 2vw, 68px);
-  padding-right: clamp(8px, 2vw, 68px);
+  padding-left: clamp(0px, 1vw, 68px);
+  padding-right: clamp(0px, 1vw, 68px);
   max-width: $max-dp-width;
   margin: 0 auto;
 }

@@ -40,13 +40,13 @@
         'tags img';
     }
 
-    gap: $space16-24;
+    gap: $spaceing16-24;
   }
 
   &__recipes {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-    gap: $space16-24;
+    gap: $spaceing16-24;
   }
 }
 

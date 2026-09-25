@@ -9,4 +9,5 @@ import { Component, input } from '@angular/core';
 export class Tag {
   label = input<string>('');
   type = input<string>();
+  className = input<string | string[]>();
 }

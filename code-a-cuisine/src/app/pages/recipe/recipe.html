@@ -31,7 +31,7 @@
         <div class="tags">
           @for (tag of data.tags; track $index) {
             @if (!($index === 0)) {
-              <app-tag [label]="tag | titlecase" ]></app-tag>
+              <app-tag [label]="tag | titlecase" ] [type]="'tag'"></app-tag>
             }
           }
           <app-tag [label]="likeCount().toString()" type="like"></app-tag>
@@ -39,28 +39,22 @@
 
         <div class="details__nutrition">
           <h4 class="nutrition__title">Nutritional information</h4>
-          <table class="nutrition__tabel">
-            <thead>
-              <th scope="col" class="nutrition__head">Energie</th>
-              <th scope="col" class="nutrition__head">Protein</th>
-              <th scope="col" class="nutrition__head">Fat</th>
-              <th scope="col" class="nutrition__head">Carbs</th>
-            </thead>
-            <tbody>
-              <td class="nutrition__data">{{ data.nutrition_per_portion.kcal }} kcal</td>
-              <td class="nutrition__data">{{ data.nutrition_per_portion.protein }}g</td>
-              <td class="nutrition__data">{{ data.nutrition_per_portion.fat }}g</td>
-              <td class="nutrition__data">{{ data.nutrition_per_portion.carbs }}g</td>
-            </tbody>
-          </table>
+          <dl class="nutrition__table">
+            @for (item of nutritionItems(); track item.label) {
+              <div class="nutrition__item">
+                <dt class="nutrition__head">{{ item.label }}</dt>
+                <dd class="nutrition__data text-sm">{{ item.value }} {{ item.unit }}</dd>
+              </div>
+            }
+          </dl>
         </div>
       </section>
 
       <section class="recipe__ingredients">
         <app-hero-banner heading="Ingredients" variant="ingredients"></app-hero-banner>
-        @if (ingredientsOpen()) {
-          <div class="ingredients">
-            <h3 class="ingredients__title">Your ingredients</h3>
+        <div class="ingredients" [class.is-collapsed]="!ingredientsOpen()">
+          <div class="ingredients__container">
+            <h3 class="ingredients__title text-md">Your ingredients</h3>
             <ul class="ingredients__list">
               @for (item of data.your_ingredients; track $index) {
                 <li class="ingredients__item">
@@ -69,8 +63,10 @@
                 </li>
               }
             </ul>
+          </div>
 
-            <h3 class="ingredients__title">Extra ingredients</h3>
+          <div class="ingredients__container">
+            <h3 class="ingredients__title text-md">Extra ingredients</h3>
             <ul class="ingredients__list">
               @for (item of data.extra_ingredients; track $index) {
                 <li class="ingredients__item">
@@ -80,7 +76,7 @@
               }
             </ul>
           </div>
-        }
+        </div>
         <button type="button" class="recipe__toggle" [attr.aria-expanded]="ingredientsOpen()" (click)="ingredientsOpen.set(!ingredientsOpen())">
           {{ ingredientsOpen() ? 'Hide' : 'Show' }} ingredients
         </button>
@@ -88,19 +84,17 @@
 
       <section class="recipe__directions">
         <app-hero-banner heading="Directions" variant="directions"></app-hero-banner>
-        @if (directionsOpen()) {
-          <ol class="directions">
-            @for (step of data.steps; track $index) {
-              <li class="directions__step">
-                <div class="directions__head">
-                  <h3 class="directions__title">{{ step.title }}</h3>
-                  <app-tag [label]="step.chef" [type]="step.chef"></app-tag>
-                </div>
-                <p class="directions__description">{{ step.description }}</p>
-              </li>
-            }
-          </ol>
-        }
+        <ol class="directions" [class.is-collapsed]="!directionsOpen()">
+          @for (step of data.steps; track $index) {
+            <li class="directions__step">
+              <div class="directions__head">
+                <h3 class="directions__title">{{ step.title }}</h3>
+                <app-tag [label]="step.chef" [type]="step.chef"></app-tag>
+              </div>
+              <p class="directions__description">{{ step.description }}</p>
+            </li>
+          }
+        </ol>
         <button type="button" class="recipe__toggle" [attr.aria-expanded]="directionsOpen()" (click)="directionsOpen.set(!directionsOpen())">
           {{ directionsOpen() ? 'Hide' : 'Show' }} directions
         </button>

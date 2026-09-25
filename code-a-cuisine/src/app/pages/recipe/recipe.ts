@@ -31,6 +31,17 @@ export class Recipe {
     return Array.from({ length: persons }, (_, i) => `Chef ${i + 1}`);
   });
 
+  nutritionItems = computed(() => {
+    const n = this.recipe.value()?.nutrition_per_portion;
+    if (!n) return;
+    return [
+      { label: 'Energie', value: n.kcal, unit: 'kcal' },
+      { label: 'Protein', value: n.protein, unit: 'g' },
+      { label: 'Fat', value: n.fat, unit: 'g' },
+      { label: 'Carbs', value: n.carbs, unit: 'g' },
+    ];
+  });
+
   private readonly likesStorageKey = 'liked-recipes';
   liked = linkedSignal(() => this.readLikedRecipes()[this.id()] === true);
   likeCount = linkedSignal(() => this.recipe.value()?.likes ?? 0);

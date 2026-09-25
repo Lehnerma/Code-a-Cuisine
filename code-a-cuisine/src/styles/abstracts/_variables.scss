@@ -46,6 +46,7 @@ $breakpoint-xl: 1200px;
 
 $max-dp-width: 1440px;
 $lg-dp-width: 1332px;
+$max-recipe-width: 1152px;
 
 $z-index-dropdown: 1000;
 $z-index-modal: 1050;
@@ -60,5 +61,7 @@ $f-title: 'Ubuntu', sans-serif;
 
 // Spacing
 
-$space16-24: clamp(16px, 2vw, 24px);
-$space40-48: clamp(40px, 4vw, 48px);
+$spaceing0-48: clamp(0px, 1vw, 40px);
+$spaceing16-24: clamp(16px, 2vw, 24px);
+$spaceing40-48: clamp(40px, 4vw, 48px);
+$spaceing40-80: clamp(40px, 12vw, 80px);

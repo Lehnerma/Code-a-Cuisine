@@ -1,13 +1,23 @@
 @use '../../../styles/abstracts' as *;
 
+:host {
+  @include page-bg(white);
+}
+
 .recipe {
   display: grid;
-  gap: $space40-48;
+  justify-content: center;
+  gap: $spaceing40-48;
   background-color: $creme-main-02;
-  border-radius: 16px;
+  border-radius: 20px;
+  padding: 4px;
+  @include respond-to(sm) {
+    padding: $spaceing0-48;
+  }
   border: solid 3px $creme-main;
 
   &__details {
+    max-width: $max-recipe-width;
     color: $green-middle;
     padding: 24px;
     background-color: $creme-main;
@@ -21,7 +31,7 @@
       'nutrition'
       'tags';
     @include respond-to(lg) {
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: 1.5fr 1fr;
       grid-template-areas:
         'time time'
         'title tags'
@@ -51,6 +61,9 @@
     margin-top: 32px;
     color: $green-dark;
     @include f-text(clamp(rem(18), 2.5vw, rem(20)), $green-dark, 600);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 
   &__time {
@@ -82,10 +95,34 @@
     @include f-text(rem(18), $green-dark, 500);
   }
 
+  &__table {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    column-gap: $spaceing16-24;
+    row-gap: 16px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__data {
     @include respond-to(md) {
       font-weight: 500;
     }
+  }
+}
+
+.is-collapsed {
+  @media (max-width: #{$breakpoint-lg - 1}) {
+    display: none;
+  }
+}
+
+.recipe__toggle {
+  @include respond-to(lg) {
+    display: none;
   }
 }
 
@@ -94,4 +131,32 @@
   justify-content: flex-start;
   gap: 16px;
   flex-wrap: wrap;
+}
+
+.ingredients {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  column-gap: $spaceing40-80;
+  row-gap: 24px;
+
+  &__container {
+    display: grid;
+    justify-content: center;
+    width: 100%;
+    border: solid red 1px; //todo delete only for testing
+  }
+
+  &__title {
+    color: $green-recipe;
+    text-align: center;
+  }
+
+  &__list {
+    padding-left: 20px;
+  }
+
+  &__item {
+    list-style-type: disc;
+  }
 }
