@@ -1,0 +1,63 @@
+<section class="hero">
+  <div class="hero__deco hero__deco--start" aria-hidden="true">
+    @if (variant() === 'ingredients') {
+      <svg class="hero__art hero__art--leaf" viewBox="0 0 100 70" fill="none">
+        <path d="M4 40C16 24 34 26 46 38C34 52 16 54 4 40Z" fill="#396039" />
+        <path d="M46 34C50 16 66 6 82 10C80 28 66 40 46 34Z" fill="#396039" />
+        <path d="M30 60C32 44 42 34 54 30" stroke="#10310b" stroke-width="2" stroke-linecap="round" />
+        <path d="M10 40H40" stroke="#c4d0c4" stroke-width="1.5" stroke-linecap="round" />
+      </svg>
+      <svg class="hero__art hero__art--pepper" viewBox="0 0 50 40" fill="#10310b">
+        <circle cx="10" cy="8" r="6" />
+        <circle cx="38" cy="18" r="6" />
+        <circle cx="18" cy="32" r="5" />
+      </svg>
+    } @else {
+      <svg class="hero__art hero__art--bowl-open" viewBox="0 0 120 70" fill="none">
+        <path d="M6 26H114C114 52 92 68 60 68C28 68 6 52 6 26Z" fill="#10310b" />
+        <ellipse cx="60" cy="26" rx="54" ry="14" fill="#a8442a" opacity=".55" />
+        <ellipse cx="60" cy="26" rx="46" ry="10" fill="#c4b98a" />
+        <circle cx="42" cy="24" r="3" fill="#396039" />
+        <circle cx="64" cy="27" r="3" fill="#396039" />
+        <circle cx="82" cy="23" r="2.5" fill="#6b5a2e" />
+      </svg>
+      <svg class="hero__art hero__art--sprig" viewBox="0 0 60 40" fill="none">
+        <path d="M2 34C20 30 40 20 56 8" stroke="#10310b" stroke-width="3" stroke-linecap="round" />
+        <path d="M16 30L10 18M28 24L24 10M40 16L40 4" stroke="#10310b" stroke-width="3" stroke-linecap="round" />
+      </svg>
+    }
+  </div>
+
+  <h2 class="hero__title">{{ heading() }}</h2>
+
+  <div class="hero__deco hero__deco--end" aria-hidden="true">
+    @if (variant() === 'ingredients') {
+      <svg class="hero__art hero__art--bowl" viewBox="0 0 110 80" fill="none">
+        <path d="M6 32H104C104 62 84 78 55 78C26 78 6 62 6 32Z" fill="#10310b" />
+        <ellipse cx="55" cy="32" rx="49" ry="16" fill="#396039" />
+        <ellipse cx="55" cy="32" rx="41" ry="12" fill="#e8dcc0" />
+        <circle cx="40" cy="30" r="1.6" fill="#10310b" />
+        <circle cx="56" cy="34" r="1.6" fill="#10310b" />
+        <circle cx="70" cy="29" r="1.6" fill="#10310b" />
+      </svg>
+      <svg class="hero__art hero__art--spoon" viewBox="0 0 80 50" fill="none">
+        <path d="M2 40L48 12" stroke="#396039" stroke-width="7" stroke-linecap="round" />
+        <ellipse cx="62" cy="24" rx="16" ry="12" fill="#396039" transform="rotate(-25 62 24)" />
+        <ellipse cx="62" cy="24" rx="11" ry="7" fill="#e8dcc0" transform="rotate(-25 62 24)" />
+      </svg>
+    } @else {
+      <svg class="hero__art hero__art--parsley" viewBox="0 0 50 50" fill="#10310b">
+        <path d="M25 48V26M25 26C14 26 8 18 8 8C20 8 26 16 25 26ZM25 26C36 26 42 18 42 8C30 8 24 16 25 26Z" />
+      </svg>
+      <svg class="hero__art hero__art--bottle" viewBox="0 0 60 130" fill="none">
+        <path
+          d="M22 4H38V22C38 30 52 34 52 52V118C52 124 48 128 42 128H18C12 128 8 124 8 118V52C8 34 22 30 22 22Z"
+          fill="#c4d0c4"
+          stroke="#10310b"
+          stroke-width="4"
+        />
+        <path d="M10 62H50V118C50 123 47 126 42 126H18C13 126 10 123 10 118Z" fill="#396039" opacity=".6" />
+      </svg>
+    }
+  </div>
+</section>

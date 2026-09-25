@@ -1,0 +1,93 @@
+@use '../../../styles/abstracts' as *;
+
+.hero {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  max-width: $max-dp-width;
+  min-height: clamp(64px, 12vw, 120px);
+  margin-inline: auto;
+  padding-block: 12px;
+  padding-inline: clamp(72px, 22vw, 320px);
+  background-color: $creme-main;
+  border-radius: clamp(12px, 2vw, 24px);
+
+  &__title {
+    @include f-title(clamp(#{rem(22)}, 4.5vw, #{rem(48)}), $green-dark, 500);
+    margin: 0;
+    text-align: center;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+  }
+
+  &__deco {
+    position: absolute;
+    inset-block: 0;
+    width: clamp(64px, 20vw, 300px);
+    pointer-events: none;
+
+    &--start {
+      inset-inline-start: clamp(4px, 1.5vw, 24px);
+    }
+
+    &--end {
+      inset-inline-end: clamp(4px, 1.5vw, 24px);
+    }
+  }
+
+  &__art {
+    position: absolute;
+    height: auto;
+  }
+
+  // ingredients
+  &__art--leaf {
+    width: clamp(44px, 9vw, 110px);
+    inset-inline-start: 0;
+    inset-block-start: 8%;
+  }
+
+  &__art--pepper {
+    width: clamp(20px, 4vw, 48px);
+    inset-inline-start: clamp(18px, 5vw, 64px);
+    inset-block-end: -4%;
+  }
+
+  &__art--bowl {
+    width: clamp(52px, 10vw, 128px);
+    inset-inline-end: clamp(12px, 3vw, 48px);
+    inset-block-end: -8%;
+  }
+
+  &__art--spoon {
+    width: clamp(36px, 7vw, 88px);
+    inset-inline-end: 0;
+    inset-block-start: -22%;
+  }
+
+  // directions
+  &__art--bowl-open {
+    width: clamp(56px, 11vw, 136px);
+    inset-inline-start: clamp(4px, 2vw, 32px);
+    inset-block-start: -28%;
+  }
+
+  &__art--sprig {
+    width: clamp(24px, 4.5vw, 56px);
+    inset-inline-start: 0;
+    inset-block-end: 6%;
+  }
+
+  &__art--parsley {
+    width: clamp(22px, 4vw, 48px);
+    inset-inline-end: clamp(28px, 7vw, 96px);
+    inset-block-start: 8%;
+  }
+
+  &__art--bottle {
+    width: clamp(26px, 5vw, 62px);
+    inset-inline-end: 0;
+    inset-block-end: -30%;
+  }
+}
