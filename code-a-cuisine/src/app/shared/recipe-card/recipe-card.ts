@@ -11,5 +11,5 @@ export class RecipeCard {
   recipeNumber = input<number>(1);
   recipeTitle = input<string>();
   cookingTime = input<number | string>(20);
-  recipeId = input<string>();
+  recipeId = input.required<string>();
 }

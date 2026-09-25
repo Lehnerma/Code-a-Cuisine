@@ -44,7 +44,7 @@
           <img class="header__img" src="/assets/img/chatty_cac.png" alt="" />
           <span class="header__tags">
             @for (tag of allTags(); track $index) {
-              <app-tag label="{{ tag | titlecase }}"></app-tag>
+              <app-tag label="{{ tag | titlecase }}" type="tag"></app-tag>
             }
           </span>
         </section>

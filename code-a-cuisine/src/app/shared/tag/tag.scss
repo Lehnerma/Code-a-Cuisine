@@ -1,10 +1,10 @@
 @use '../../../styles/abstracts' as *;
 
 .tag {
-  display: flex;
+  @include flex-center;
   gap: 4px;
   width: fit-content;
-  padding: 4px;
+  padding: 6px;
   border-radius: 6px;
   background-color: $creme-main;
 
@@ -20,7 +20,6 @@
   &--chef4 {
     background-color: $green-recipe-04;
   }
-
   &--tag {
     padding: 6px 12px;
     border-radius: 30px;
@@ -28,5 +27,13 @@
 
   &__label {
     @include f-text(rem(18), $green-dark, 500);
+  }
+}
+
+.heart {
+  background-color: $green-main-03;
+
+  &__label {
+    @include f-text(rem(16), $green-main, 500);
   }
 }

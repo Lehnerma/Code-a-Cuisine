@@ -7,10 +7,11 @@ export interface Recipe {
   portions: number;
   persons: number;
   tags: string[];
-  nutrition_per_portion: NutritionItem[];
+  nutrition_per_portion: NutritionItem;
   your_ingredients: RecipeIngredient[];
   extra_ingredients: RecipeIngredient[];
   steps: StepItem[];
+  likes: number;
 }
 
 interface StepItem {

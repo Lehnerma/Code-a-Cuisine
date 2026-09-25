@@ -1,0 +1,13 @@
+@use '../../../styles/abstracts' as *;
+
+.recipe {
+  &__details {
+    color: $green-middle;
+  }
+}
+
+.nutrition {
+  &__title {
+    @include f-text(rem(18), $green-dark, 500);
+  }
+}
