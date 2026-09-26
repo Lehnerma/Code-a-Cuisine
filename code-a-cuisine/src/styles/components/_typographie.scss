@@ -9,12 +9,16 @@
 
 .text-base {
   font-family: $f-txt;
-  font-size: clamp(rem(16), 2.5vw, rem(20));
+  font-size: clamp(rem(18), 2.5vw, rem(20));
 }
 
 .text-md {
   font-family: $f-txt;
   font-size: clamp(rem(18), 3.5vw, rem(24));
+}
+.text-16-24 {
+  font-family: $f-txt;
+  font-size: clamp(rem(16), 3.5vw, rem(24));
 }
 
 .text-lg {

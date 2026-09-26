@@ -52,14 +52,14 @@
 
       <section class="recipe__ingredients">
         <app-hero-banner heading="Ingredients" variant="ingredients"></app-hero-banner>
-        <div class="ingredients" [class.is-collapsed]="!ingredientsOpen()">
+        <div class="ingredients hero-container" [class.is-collapsed]="!ingredientsOpen()">
           <div class="ingredients__container">
             <h3 class="ingredients__title text-md">Your ingredients</h3>
             <ul class="ingredients__list">
               @for (item of data.your_ingredients; track $index) {
                 <li class="ingredients__item">
-                  <span class="ingredients__amount">{{ item.amount }} {{ item.unit }}</span>
-                  <span class="ingredients__name">{{ item.name }}</span>
+                  <span class="ingredients__amount text-16-24"> {{ item.amount }} {{ formatAmount(item.unit) }}</span>
+                  <span class="ingredients__name text-16-24"> {{ item.name | titlecase }}</span>
                 </li>
               }
             </ul>
@@ -70,41 +70,73 @@
             <ul class="ingredients__list">
               @for (item of data.extra_ingredients; track $index) {
                 <li class="ingredients__item">
-                  <span class="ingredients__amount">{{ item.amount }} {{ item.unit }}</span>
-                  <span class="ingredients__name">{{ item.name }}</span>
+                  <span class="ingredients__amount text-16-24"> {{ item.amount }} {{ formatAmount(item.unit) }}</span>
+                  <span class="ingredients__name text-16-24"> {{ item.name | titlecase }}</span>
                 </li>
               }
             </ul>
           </div>
         </div>
-        <button type="button" class="recipe__toggle" [attr.aria-expanded]="ingredientsOpen()" (click)="ingredientsOpen.set(!ingredientsOpen())">
-          {{ ingredientsOpen() ? 'Hide' : 'Show' }} ingredients
+        <button type="button" class="btn toggle" [attr.aria-expanded]="ingredientsOpen()" (click)="ingredientsOpen.set(!ingredientsOpen())">
+          <p>{{ ingredientsOpen() ? 'Hide' : 'Show' }} ingredients</p>
+          <svg
+            class="toggle--icon"
+            [class.toggle--turned]="ingredientsOpen()"
+            width="14"
+            height="8"
+            viewBox="0 0 14 8"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6.14535 7.61702L0.244186 1.44681C0.162791 1.3617 0.101744 1.2695 0.0610465 1.17021C0.0203488 1.07092 0 0.964539 0 0.851064C0 0.624114 0.0746124 0.425532 0.223837 0.255319C0.373062 0.0851064 0.569767 0 0.813953 0H13.186C13.4302 0 13.6269 0.0851064 13.7762 0.255319C13.9254 0.425532 14 0.624114 14 0.851064C14 0.907802 13.9186 1.10638 13.7558 1.44681L7.85465 7.61702C7.71899 7.75887 7.58333 7.85816 7.44767 7.91489C7.31202 7.97163 7.16279 8 7 8C6.83721 8 6.68798 7.97163 6.55233 7.91489C6.41667 7.85816 6.28101 7.75887 6.14535 7.61702Z"
+              fill="#1E5515"
+            />
+          </svg>
         </button>
       </section>
 
       <section class="recipe__directions">
         <app-hero-banner heading="Directions" variant="directions"></app-hero-banner>
-        <ol class="directions" [class.is-collapsed]="!directionsOpen()">
+        <ol class="directions hero-container" [class.is-collapsed]="!directionsOpen()">
           @for (step of data.steps; track $index) {
             <li class="directions__step">
               <div class="directions__head">
-                <h3 class="directions__title">{{ step.title }}</h3>
+                <span class="directions__number" aria-hidden="true">{{ $index + 1 }}.</span>
+                <h3 class="directions__title text-16-24">{{ step.title }}</h3>
                 <app-tag [label]="step.chef" [type]="step.chef"></app-tag>
               </div>
-              <p class="directions__description">{{ step.description }}</p>
+              <p class="directions__description text-sm">{{ step.description }}</p>
             </li>
           }
         </ol>
-        <button type="button" class="recipe__toggle" [attr.aria-expanded]="directionsOpen()" (click)="directionsOpen.set(!directionsOpen())">
-          {{ directionsOpen() ? 'Hide' : 'Show' }} directions
+        <button type="button" class="btn toggle" [attr.aria-expanded]="directionsOpen()" (click)="directionsOpen.set(!directionsOpen())">
+          <p>{{ directionsOpen() ? 'Hide' : 'Show' }} directions</p>
+          <svg
+            class="toggle--icon"
+            [class.toggle--turned]="directionsOpen()"
+            width="14"
+            height="8"
+            viewBox="0 0 14 8"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6.14535 7.61702L0.244186 1.44681C0.162791 1.3617 0.101744 1.2695 0.0610465 1.17021C0.0203488 1.07092 0 0.964539 0 0.851064C0 0.624114 0.0746124 0.425532 0.223837 0.255319C0.373062 0.0851064 0.569767 0 0.813953 0H13.186C13.4302 0 13.6269 0.0851064 13.7762 0.255319C13.9254 0.425532 14 0.624114 14 0.851064C14 0.907802 13.9186 1.10638 13.7558 1.44681L7.85465 7.61702C7.71899 7.75887 7.58333 7.85816 7.44767 7.91489C7.31202 7.97163 7.16279 8 7 8C6.83721 8 6.68798 7.97163 6.55233 7.91489C6.41667 7.85816 6.28101 7.75887 6.14535 7.61702Z"
+              fill="#1E5515"
+            />
+          </svg>
         </button>
       </section>
+
       <aside class="recipe__like like">
-        <h2 class="like__title">Just finished this meal?</h2>
-        <p class="like__text">Give it a heart, so that the others know this is delicious.</p>
+        <div class="like__header">
+          <h2 class="like__title text-base">Just finished this meal?</h2>
+          <p class="like__text">Give it a heart, so that the others know this is delicious.</p>
+        </div>
         <button
           type="button"
-          class="like__btn"
+          class="btn like__btn"
           [class.like__btn--active]="liked()"
           [attr.aria-pressed]="liked()"
           aria-label="Give this recipe a heart"
@@ -146,8 +178,17 @@
     </article>
 
     <aside class="recipe__cta cta">
-      <p class="cta__text">Find inspiration for your next culinary adventure!</p>
-      <app-button tag="a" targetRoute="/cookbook" className="btn__primary cta__btn" theme="green">Cookbook</app-button>
+      <p class="cta__text text-16-24">Find inspiration for your next culinary adventure!</p>
+      <app-button tag="a" targetRoute="/cookbook" className="btn__primary cta__btn text-16-24" theme="green">Cookbook</app-button>
     </aside>
+
+    <app-button tag="a" className="btn__secondary" theme="green" class="new-btn" targetRoute="/generate-recipe">
+      Generate new recipe
+      <svg class="btn__secondary--icon next-btn--icon" width="26" height="15" viewBox="0 0 26 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M1 6.36395C0.447715 6.36395 0 6.81167 0 7.36395C0 7.91624 0.447715 8.36395 1 8.36395V6.36395ZM25.7071 8.07106C26.0976 7.68054 26.0976 7.04737 25.7071 6.65685L19.3431 0.292885C18.9526 -0.0976396 18.3195 -0.0976396 17.9289 0.292885C17.5384 0.683409 17.5384 1.31657 17.9289 1.7071L23.5858 7.36395L17.9289 13.0208C17.5384 13.4113 17.5384 14.0445 17.9289 14.435C18.3195 14.8255 18.9526 14.8255 19.3431 14.435L25.7071 8.07106ZM1 7.36395V8.36395H25V7.36395V6.36395H1V7.36395Z"
+        />
+      </svg>
+    </app-button>
   }
 </div>

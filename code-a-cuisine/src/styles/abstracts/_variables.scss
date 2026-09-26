@@ -9,6 +9,8 @@ $green-secondary-hover: rgba($green-main, 0.1);
 $green-light-bg: rgba($green-main, 0.3);
 $green-middle: rgba(30, 85, 21);
 $green-olive: $green-main;
+$green-olive-01: rgba($green-olive, 0.1);
+$green-olive-05: rgba($green-olive, 0.5);
 $green-primary-hover: rgba(5, 94, 5);
 $green-recipe: rgba(0, 128, 0);
 $green-recipe-04: rgba($green-recipe, 0.4);
@@ -63,5 +65,7 @@ $f-title: 'Ubuntu', sans-serif;
 
 $spaceing0-48: clamp(0px, 1vw, 40px);
 $spaceing16-24: clamp(16px, 2vw, 24px);
+$spaceing16-40: clamp(16px, 8vw, 40px);
+$spaceing32-40: clamp(32px, 6vw, 40px);
 $spaceing40-48: clamp(40px, 4vw, 48px);
 $spaceing40-80: clamp(40px, 12vw, 80px);

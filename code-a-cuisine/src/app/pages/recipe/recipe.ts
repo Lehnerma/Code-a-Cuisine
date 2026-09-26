@@ -42,6 +42,34 @@ export class Recipe {
     ];
   });
 
+  private readonly unitAbbreviations: Record<string, string> = {
+    gram: 'g',
+    grams: 'g',
+    gramm: 'g',
+    kilogram: 'kg',
+    kilograms: 'kg',
+    kilogramm: 'kg',
+    milliliter: 'ml',
+    milliliters: 'ml',
+    liter: 'l',
+    liters: 'l',
+    tablespoon: 'tbsp',
+    tablespoons: 'tbsp',
+    teaspoon: 'tsp',
+    teaspoons: 'tsp',
+  };
+
+  /**
+   * Formats amount and unit of an ingredient and uses the short unit (e.g. gram -> g).
+   * Units without a known short form stay unchanged.
+   * @param amount The amount of the ingredient.
+   * @param unit The unit as delivered by Supabase.
+   */
+  formatAmount(unit: string): string {
+    const short = this.unitAbbreviations[unit.trim().toLowerCase()] ?? unit;
+    return `${short}`.trim();
+  }
+
   private readonly likesStorageKey = 'liked-recipes';
   liked = linkedSignal(() => this.readLikedRecipes()[this.id()] === true);
   likeCount = linkedSignal(() => this.recipe.value()?.likes ?? 0);
