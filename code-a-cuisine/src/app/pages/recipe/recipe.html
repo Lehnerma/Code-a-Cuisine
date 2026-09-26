@@ -1,0 +1,194 @@
+<div class="body">
+  <main-header backLinkName="Recipe results" backLink="/recipe-results"></main-header>
+  @if (recipe.isLoading()) {
+    <p>Laoding the hole recipe - maybe u can get a Glas of water and drink it or u order 'Glasfaser'</p>
+  } @else if (recipe.error()) {
+    <p>Maybe here is an Buggy pls writte a ticket.</p>
+  } @else if (recipe.value(); as data) {
+    <article class="recipe">
+      <section class="recipe__details">
+        <div class="details__time">
+          <svg class="detail__time--icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M11 9.6V6C11 5.71667 10.9042 5.47917 10.7125 5.2875C10.5208 5.09583 10.2833 5 10 5C9.71667 5 9.47917 5.09583 9.2875 5.2875C9.09583 5.47917 9 5.71667 9 6V9.975C9 10.1083 9.025 10.2375 9.075 10.3625C9.125 10.4875 9.2 10.6 9.3 10.7L12.6 14C12.7833 14.1833 13.0167 14.275 13.3 14.275C13.5833 14.275 13.8167 14.1833 14 14C14.1833 13.8167 14.275 13.5833 14.275 13.3C14.275 13.0167 14.1833 12.7833 14 12.6L11 9.6ZM10 20C8.61667 20 7.31667 19.7375 6.1 19.2125C4.88333 18.6875 3.825 17.975 2.925 17.075C2.025 16.175 1.3125 15.1167 0.7875 13.9C0.2625 12.6833 0 11.3833 0 10C0 8.61667 0.2625 7.31667 0.7875 6.1C1.3125 4.88333 2.025 3.825 2.925 2.925C3.825 2.025 4.88333 1.3125 6.1 0.7875C7.31667 0.2625 8.61667 0 10 0C11.3833 0 12.6833 0.2625 13.9 0.7875C15.1167 1.3125 16.175 2.025 17.075 2.925C17.975 3.825 18.6875 4.88333 19.2125 6.1C19.7375 7.31667 20 8.61667 20 10C20 11.3833 19.7375 12.6833 19.2125 13.9C18.6875 15.1167 17.975 16.175 17.075 17.075C16.175 17.975 15.1167 18.6875 13.9 19.2125C12.6833 19.7375 11.3833 20 10 20ZM10 18C12.2167 18 14.1042 17.2208 15.6625 15.6625C17.2208 14.1042 18 12.2167 18 10C18 7.78333 17.2208 5.89583 15.6625 4.3375C14.1042 2.77917 12.2167 2 10 2C7.78333 2 5.89583 2.77917 4.3375 4.3375C2.77917 5.89583 2 7.78333 2 10C2 12.2167 2.77917 14.1042 4.3375 15.6625C5.89583 17.2208 7.78333 18 10 18Z"
+              fill="#396039"
+            />
+          </svg>
+          <p class="detail__time--txt text-base">Coocking time: {{ data.cooking_time }} min</p>
+        </div>
+
+        <h1 class="text-display details__title">{{ data.title }}</h1>
+
+        <div class="details__chefs">
+          <h3 class="chefs__title">Cooking person: {{ data.persons }}</h3>
+          <span class="tags">
+            @for (chef of chefs(); track chef) {
+              <app-tag [label]="chef" [type]="chef"></app-tag>
+            }
+          </span>
+        </div>
+
+        <div class="tags">
+          @for (tag of data.tags; track $index) {
+            @if (!($index === 0)) {
+              <app-tag [label]="tag | titlecase" ] [type]="'tag'"></app-tag>
+            }
+          }
+          <app-tag [label]="likeCount().toString()" type="like"></app-tag>
+        </div>
+
+        <div class="details__nutrition">
+          <h4 class="nutrition__title">Nutritional information</h4>
+          <dl class="nutrition__table">
+            @for (item of nutritionItems(); track item.label) {
+              <div class="nutrition__item">
+                <dt class="nutrition__head">{{ item.label }}</dt>
+                <dd class="nutrition__data text-sm">{{ item.value }} {{ item.unit }}</dd>
+              </div>
+            }
+          </dl>
+        </div>
+      </section>
+
+      <section class="recipe__ingredients">
+        <app-hero-banner heading="Ingredients" variant="ingredients"></app-hero-banner>
+        <div class="ingredients hero-container" [class.is-collapsed]="!ingredientsOpen()">
+          <div class="ingredients__container">
+            <h3 class="ingredients__title text-md">Your ingredients</h3>
+            <ul class="ingredients__list">
+              @for (item of data.your_ingredients; track $index) {
+                <li class="ingredients__item">
+                  <span class="ingredients__amount text-16-24"> {{ item.amount }} {{ formatAmount(item.unit) }}</span>
+                  <span class="ingredients__name text-16-24"> {{ item.name | titlecase }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+
+          <div class="ingredients__container">
+            <h3 class="ingredients__title text-md">Extra ingredients</h3>
+            <ul class="ingredients__list">
+              @for (item of data.extra_ingredients; track $index) {
+                <li class="ingredients__item">
+                  <span class="ingredients__amount text-16-24"> {{ item.amount }} {{ formatAmount(item.unit) }}</span>
+                  <span class="ingredients__name text-16-24"> {{ item.name | titlecase }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+        <button type="button" class="btn toggle" [attr.aria-expanded]="ingredientsOpen()" (click)="ingredientsOpen.set(!ingredientsOpen())">
+          <p>{{ ingredientsOpen() ? 'Hide' : 'Show' }} ingredients</p>
+          <svg
+            class="toggle--icon"
+            [class.toggle--turned]="ingredientsOpen()"
+            width="14"
+            height="8"
+            viewBox="0 0 14 8"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6.14535 7.61702L0.244186 1.44681C0.162791 1.3617 0.101744 1.2695 0.0610465 1.17021C0.0203488 1.07092 0 0.964539 0 0.851064C0 0.624114 0.0746124 0.425532 0.223837 0.255319C0.373062 0.0851064 0.569767 0 0.813953 0H13.186C13.4302 0 13.6269 0.0851064 13.7762 0.255319C13.9254 0.425532 14 0.624114 14 0.851064C14 0.907802 13.9186 1.10638 13.7558 1.44681L7.85465 7.61702C7.71899 7.75887 7.58333 7.85816 7.44767 7.91489C7.31202 7.97163 7.16279 8 7 8C6.83721 8 6.68798 7.97163 6.55233 7.91489C6.41667 7.85816 6.28101 7.75887 6.14535 7.61702Z"
+              fill="#1E5515"
+            />
+          </svg>
+        </button>
+      </section>
+
+      <section class="recipe__directions">
+        <app-hero-banner heading="Directions" variant="directions"></app-hero-banner>
+        <ol class="directions hero-container" [class.is-collapsed]="!directionsOpen()">
+          @for (step of data.steps; track $index) {
+            <li class="directions__step">
+              <div class="directions__head">
+                <span class="directions__number" aria-hidden="true">{{ $index + 1 }}.</span>
+                <h3 class="directions__title text-16-24">{{ step.title }}</h3>
+                <app-tag [label]="step.chef" [type]="step.chef"></app-tag>
+              </div>
+              <p class="directions__description text-sm">{{ step.description }}</p>
+            </li>
+          }
+        </ol>
+        <button type="button" class="btn toggle" [attr.aria-expanded]="directionsOpen()" (click)="directionsOpen.set(!directionsOpen())">
+          <p>{{ directionsOpen() ? 'Hide' : 'Show' }} directions</p>
+          <svg
+            class="toggle--icon"
+            [class.toggle--turned]="directionsOpen()"
+            width="14"
+            height="8"
+            viewBox="0 0 14 8"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6.14535 7.61702L0.244186 1.44681C0.162791 1.3617 0.101744 1.2695 0.0610465 1.17021C0.0203488 1.07092 0 0.964539 0 0.851064C0 0.624114 0.0746124 0.425532 0.223837 0.255319C0.373062 0.0851064 0.569767 0 0.813953 0H13.186C13.4302 0 13.6269 0.0851064 13.7762 0.255319C13.9254 0.425532 14 0.624114 14 0.851064C14 0.907802 13.9186 1.10638 13.7558 1.44681L7.85465 7.61702C7.71899 7.75887 7.58333 7.85816 7.44767 7.91489C7.31202 7.97163 7.16279 8 7 8C6.83721 8 6.68798 7.97163 6.55233 7.91489C6.41667 7.85816 6.28101 7.75887 6.14535 7.61702Z"
+              fill="#1E5515"
+            />
+          </svg>
+        </button>
+      </section>
+
+      <aside class="recipe__like like">
+        <div class="like__header">
+          <h2 class="like__title text-base">Just finished this meal?</h2>
+          <p class="like__text">Give it a heart, so that the others know this is delicious.</p>
+        </div>
+        <button
+          type="button"
+          class="btn like__btn"
+          [class.like__btn--active]="liked()"
+          [attr.aria-pressed]="liked()"
+          aria-label="Give this recipe a heart"
+          (click)="toggleLike()"
+        >
+          @if (liked()) {
+            <svg
+              class="like__icon like__icon--filled"
+              width="40"
+              height="36"
+              viewBox="0 0 40 36"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M20 35.35C19.5333 35.35 19.0583 35.2667 18.575 35.1C18.0917 34.9333 17.6667 34.6667 17.3 34.3L13.85 31.15C10.3167 27.9167 7.125 24.7083 4.275 21.525C1.425 18.3417 0 14.8333 0 11C0 7.86667 1.05 5.25 3.15 3.15C5.25 1.05 7.86667 0 11 0C12.7667 0 14.4333 0.375 16 1.125C17.5667 1.875 18.9 2.9 20 4.2C21.1 2.9 22.4333 1.875 24 1.125C25.5667 0.375 27.2333 0 29 0C32.1333 0 34.75 1.05 36.85 3.15C38.95 5.25 40 7.86667 40 11C40 14.8333 38.5833 18.35 35.75 21.55C32.9167 24.75 29.7 27.9667 26.1 31.2L22.7 34.3C22.3333 34.6667 21.9083 34.9333 21.425 35.1C20.9417 35.2667 20.4667 35.35 20 35.35Z"
+                fill="#008000"
+              />
+            </svg>
+          } @else {
+            <svg
+              class="like__icon like__icon--outline"
+              width="40"
+              height="36"
+              viewBox="0 0 40 36"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M20 35.35C19.5333 35.35 19.0583 35.2667 18.575 35.1C18.0917 34.9333 17.6667 34.6667 17.3 34.3L13.85 31.15C10.3167 27.9167 7.125 24.7083 4.275 21.525C1.425 18.3417 0 14.8333 0 11C0 7.86667 1.05 5.25 3.15 3.15C5.25 1.05 7.86667 0 11 0C12.7667 0 14.4333 0.375 16 1.125C17.5667 1.875 18.9 2.9 20 4.2C21.1 2.9 22.4333 1.875 24 1.125C25.5667 0.375 27.2333 0 29 0C32.1333 0 34.75 1.05 36.85 3.15C38.95 5.25 40 7.86667 40 11C40 14.8333 38.5833 18.35 35.75 21.55C32.9167 24.75 29.7 27.9667 26.1 31.2L22.7 34.3C22.3333 34.6667 21.9083 34.9333 21.425 35.1C20.9417 35.2667 20.4667 35.35 20 35.35ZM18.1 8.2C17.1333 6.83333 16.1 5.79167 15 5.075C13.9 4.35833 12.5667 4 11 4C9 4 7.33333 4.66667 6 6C4.66667 7.33333 4 9 4 11C4 12.7333 4.61667 14.575 5.85 16.525C7.08333 18.475 8.55833 20.3667 10.275 22.2C11.9917 24.0333 13.7583 25.75 15.575 27.35C17.3917 28.95 18.8667 30.2667 20 31.3C21.1333 30.2667 22.6083 28.95 24.425 27.35C26.2417 25.75 28.0083 24.0333 29.725 22.2C31.4417 20.3667 32.9167 18.475 34.15 16.525C35.3833 14.575 36 12.7333 36 11C36 9 35.3333 7.33333 34 6C32.6667 4.66667 31 4 29 4C27.4333 4 26.1 4.35833 25 5.075C23.9 5.79167 22.8667 6.83333 21.9 8.2C21.6667 8.53333 21.3833 8.78333 21.05 8.95C20.7167 9.11667 20.3667 9.2 20 9.2C19.6333 9.2 19.2833 9.11667 18.95 8.95C18.6167 8.78333 18.3333 8.53333 18.1 8.2Z"
+                fill="#008000"
+              />
+            </svg>
+          }
+        </button>
+      </aside>
+    </article>
+
+    <aside class="recipe__cta cta">
+      <p class="cta__text text-16-24">Find inspiration for your next culinary adventure!</p>
+      <app-button tag="a" targetRoute="/cookbook" className="btn__primary cta__btn text-16-24" theme="green">Cookbook</app-button>
+    </aside>
+
+    <app-button tag="a" className="btn__secondary" theme="green" class="new-btn" targetRoute="/generate-recipe">
+      Generate new recipe
+      <svg class="btn__secondary--icon next-btn--icon" width="26" height="15" viewBox="0 0 26 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M1 6.36395C0.447715 6.36395 0 6.81167 0 7.36395C0 7.91624 0.447715 8.36395 1 8.36395V6.36395ZM25.7071 8.07106C26.0976 7.68054 26.0976 7.04737 25.7071 6.65685L19.3431 0.292885C18.9526 -0.0976396 18.3195 -0.0976396 17.9289 0.292885C17.5384 0.683409 17.5384 1.31657 17.9289 1.7071L23.5858 7.36395L17.9289 13.0208C17.5384 13.4113 17.5384 14.0445 17.9289 14.435C18.3195 14.8255 18.9526 14.8255 19.3431 14.435L25.7071 8.07106ZM1 7.36395V8.36395H25V7.36395V6.36395H1V7.36395Z"
+        />
+      </svg>
+    </app-button>
+  }
+</div>

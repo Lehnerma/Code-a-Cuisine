@@ -1,1 +1,77 @@
-<p>recipe-results works!</p>
+<div class="body 2rows">
+  <main-header theme="creme"></main-header>
+  @switch (viewState()) {
+    @case ('loading') {
+      <app-loading-spinner class="loading-spinner"></app-loading-spinner>
+    }
+    @case ('timeout') {
+      <app-dialog title="Taking too long" message="This is taking too long – please try again."></app-dialog>
+    }
+    @case ('loadError') {
+      <app-dialog title="Service currently unavailable" message="Service currently unavailable – please try again later."></app-dialog>
+    }
+    @case ('insufficient') {
+      <app-dialog
+        title="Ups! Not quite enough…"
+        message="It looks like some ingredient quantities aren’t sufficient for your selected servings. Please add or adjust quantities and try again."
+      ></app-dialog>
+    }
+    @case ('error') {
+      <app-dialog title="Something went wrong" message="Something went wrong while creating your recipe."></app-dialog>
+    }
+    <!-- @case ('idle') {
+      <article>
+        <h1>Somthing went wrong please go back and try again</h1>
+        <app-button tag="a" className="btn__secondary" theme="creme" class="new-btn" targetRoute="/generate-recipe">
+          Generate new recipe
+          <svg class="btn__secondary--icon next-btn--icon" width="26" height="15" viewBox="0 0 26 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M1 6.36395C0.447715 6.36395 0 6.81167 0 7.36395C0 7.91624 0.447715 8.36395 1 8.36395V6.36395ZM25.7071 8.07106C26.0976 7.68054 26.0976 7.04737 25.7071 6.65685L19.3431 0.292885C18.9526 -0.0976396 18.3195 -0.0976396 17.9289 0.292885C17.5384 0.683409 17.5384 1.31657 17.9289 1.7071L23.5858 7.36395L17.9289 13.0208C17.5384 13.4113 17.5384 14.0445 17.9289 14.435C18.3195 14.8255 18.9526 14.8255 19.3431 14.435L25.7071 8.07106ZM1 7.36395V8.36395H25V7.36395V6.36395H1V7.36395Z"
+              fill="#FAF0E6"
+            />
+          </svg>
+        </app-button>
+      </article>
+    } -->
+    @case ('success') {
+      <article class="result">
+        <section class="result__header">
+          <h1 class="header__title text-display">The recipe results</h1>
+          <p class="header__description text-sm">
+            We took what you have and let our AI do the thinking. Here are 3 easy recipes you can make right now!
+          </p>
+
+          <img class="header__img" src="/assets/img/chatty_cac.png" alt="" />
+          <span class="header__tags">
+            @for (tag of allTags(); track $index) {
+              <app-tag label="{{ tag | titlecase }}" type="tag"></app-tag>
+            }
+          </span>
+        </section>
+
+        <section class="result__recipes">
+          @for (recipe of recipes(); track recipe.id; let i = $index) {
+            <app-recipe-card
+              [recipeNumber]="i + 1"
+              [recipeTitle]="recipe.title"
+              [cookingTime]="recipe.cooking_time"
+              [recipeId]="recipe.id"
+            ></app-recipe-card>
+          }
+        </section>
+        <app-button tag="a" className="btn__secondary" theme="creme" class="new-btn" targetRoute="/generate-recipe">
+          Generate new recipe
+          <svg class="btn__secondary--icon next-btn--icon" width="26" height="15" viewBox="0 0 26 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M1 6.36395C0.447715 6.36395 0 6.81167 0 7.36395C0 7.91624 0.447715 8.36395 1 8.36395V6.36395ZM25.7071 8.07106C26.0976 7.68054 26.0976 7.04737 25.7071 6.65685L19.3431 0.292885C18.9526 -0.0976396 18.3195 -0.0976396 17.9289 0.292885C17.5384 0.683409 17.5384 1.31657 17.9289 1.7071L23.5858 7.36395L17.9289 13.0208C17.5384 13.4113 17.5384 14.0445 17.9289 14.435C18.3195 14.8255 18.9526 14.8255 19.3431 14.435L25.7071 8.07106ZM1 7.36395V8.36395H25V7.36395V6.36395H1V7.36395Z"
+              fill="#FAF0E6"
+            />
+          </svg>
+        </app-button>
+      </article>
+    }
+    @default {
+      <app-dialog title="Something went wrong" message="Something went wrong while creating your recipe."></app-dialog>
+    }
+  }
+</div>

@@ -44,10 +44,12 @@
   gap: 16px;
 
   &--first {
-    @include f-title(clamp(rem(64), 10vw, rem(104)), $creme-yellow, 700); // todo Check vw
+    color: $creme-yellow;
+    font-weight: 700;
   }
   &--second {
-    @include f-text(clamp(rem(24), 4vw, rem(48)), $creme-yellow, 600); // todo Check vw
+    color: $creme-yellow;
+    font-weight: 600;
   }
 }
 
@@ -58,7 +60,8 @@
   gap: 30px;
 
   &__description {
-    @include f-text(clamp(rem(24), 5vw, rem(32)), $creme-main, 500);
+    color: $creme-main;
+    font-weight: 500;
     padding: 16px 26px;
   }
 }

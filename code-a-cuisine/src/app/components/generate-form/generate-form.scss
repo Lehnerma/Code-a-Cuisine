@@ -24,7 +24,8 @@
     flex-direction: column;
     gap: 24px;
     &--title {
-      @include f-text(clamp(rem(16), 5vw, rem(20)), $green-dark, 500);
+      color: $green-dark;
+      font-weight: 500;
     }
   }
 }
@@ -36,7 +37,8 @@
   width: 100%;
 
   &__label {
-    @include f-text(rem(18), $green-dark, 500);
+    color: $green-dark;
+    font-weight: 500;
   }
 
   &__dropdown {
@@ -51,7 +53,8 @@
 }
 
 .list {
-  @include f-text(clamp(rem(16), 3vw, rem(18)), $green-dark, 500);
+  color: $green-dark;
+  font-weight: 500;
   display: grid;
   gap: 6px;
   padding-left: 16px;

@@ -1,0 +1,43 @@
+@use '../../../styles/abstracts' as *;
+
+.dialog {
+  margin: auto;
+  border: none;
+  border-radius: 30px;
+  background-color: $green-olive;
+  padding: 64px;
+
+  &__close {
+    position: absolute;
+    top: 32px;
+    right: 40px;
+    display: grid;
+    place-items: center;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 8px;
+    color: $creme-main;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.329);
+  }
+  &__title {
+    @include f-title(rem(28), $creme-main, 600);
+  }
+
+  &__msg {
+    @include f-text(rem(18), $creme-main, 600);
+  }
+
+  &__backBtn {
+    @include f-text(rem(18), $creme-main, 600);
+  }
+}

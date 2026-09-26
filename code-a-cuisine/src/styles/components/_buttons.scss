@@ -27,7 +27,8 @@
   &__primary {
     padding: 16px 26px;
     @include flex-center;
-    @include f-text(clamp(rem(16), 5vw, rem(24)), var(--primary-txt), 600);
+    color: var(--primary-txt);
+    font-weight: 600;
     background-color: var(--primary-bg);
     transition:
       background-color $animation-time ease-in-out,
@@ -40,7 +41,8 @@
   }
 
   &__secondary {
-    @include f-text(clamp(rem(18), 5vw, rem(20)), var(--secondary-txt), 500);
+    color: var(--secondary-txt);
+    font-weight: 500;
     background-color: transparent;
 
     &:hover {

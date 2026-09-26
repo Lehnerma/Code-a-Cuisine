@@ -1,10 +1,10 @@
-import { RecipeDisplay } from '../interfaces/recipe-display';
+import { Recipe } from '../interfaces/recipe';
 
 export type RecipeResponse = SuccessResponse | InsufficientResponse | ErrorResponse;
 
 interface SuccessResponse {
   status: 'success';
-  recipes: RecipeDisplay[];
+  recipes: Recipe[];
 }
 
 interface InsufficientResponse {

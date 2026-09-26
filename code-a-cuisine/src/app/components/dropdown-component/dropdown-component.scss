@@ -59,7 +59,8 @@
     &--btn {
       width: 100%;
       padding: 4px 18px;
-      @include f-text(rem(16), $green-dark, 500);
+      color: $green-dark;
+      font-weight: 500;
       border-radius: 8px;
 
       &:hover {
@@ -69,7 +70,8 @@
   }
 
   &__value {
-    @include f-text(rem(16), $green-dark, 500);
+    color: $green-dark;
+    font-weight: 500;
     line-height: 20px;
   }
 }

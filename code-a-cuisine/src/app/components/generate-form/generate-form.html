@@ -1,18 +1,18 @@
 <div class="body--grid">
   <form class="form greenbg" [formGroup]="ingredientForm">
     <fieldset class="fieldset fieldset--ingredient">
-      <label for="ingredient" class="fieldset__label">Ingredient</label>
-      <input type="text" id="ingredient" class="fieldset__input" formControlName="ingredientName" />
+      <label for="ingredient" class="fieldset__label text-base">Ingredient</label>
+      <input type="text" id="ingredient" class="fieldset__input text-base" formControlName="ingredientName" />
       @if (ingredientNameError(); as message) {
-        <p class="fieldset__error">{{ message }}</p>
+        <p class="fieldset__error text-sm">{{ message }}</p>
       }
     </fieldset>
 
     <fieldset class="fieldset">
-      <label for="serving_size" class="fieldset__label">Serving size</label>
+      <label for="serving_size" class="fieldset__label text-base">Serving size</label>
 
       <section class="fieldset--row">
-        <input type="text" id="serving_size" class="fieldset__input input-sm" formControlName="servingSize" placeholder="100" />
+        <input type="text" id="serving_size" class="fieldset__input input-sm text-base" formControlName="servingSize" placeholder="100" />
         <app-dropdown-component className="fieldset__dropdown" [(selectedValue)]="unit"></app-dropdown-component>
         <app-button
           icon="add"
@@ -23,14 +23,14 @@
         ></app-button>
       </section>
       @if (servingSizeError(); as message) {
-        <p class="fieldset__error">{{ message }}</p>
+        <p class="fieldset__error text-sm">{{ message }}</p>
       }
     </fieldset>
   </form>
 
   <article class="greenbg form__list">
-    <h2 class="form__list--title">List of your Ingredients</h2>
-    <ul class="list">
+    <h2 class="form__list--title text-md">List of your Ingredients</h2>
+    <ul class="list text-base">
       @for (ingredient of ingredients(); track ingredient.id) {
         <li class="list__element" [attr.data-ingredient-id]="ingredient.id">
           <div class="list__element--container">
@@ -40,7 +40,7 @@
                   <input
                     #editServingSizeInput
                     type="text"
-                    class="fieldset__input input-sm"
+                    class="fieldset__input input-sm text-base"
                     [value]="editServingSize()"
                     (input)="editServingSize.set(editServingSizeInput.value)"
                     (keydown.enter)="saveEdit()"
@@ -55,7 +55,7 @@
               </div>
             } @else {
               <article class="flex-rewrap">
-                <p>{{ ingredient.servingSize }}{{ ingredient.unit === 'gram' ? 'g' : ingredient.unit }}</p>
+                <p>{{ ingredient.serving_size }}{{ ingredient.unit === 'gram' ? 'g' : ingredient.unit }}</p>
                 <p>{{ ingredient.name }}</p>
               </article>
               <div class="list__actions">

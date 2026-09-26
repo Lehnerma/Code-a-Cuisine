@@ -15,7 +15,8 @@
 }
 
 .legend {
-  @include f-text(rem(20), $green-dark, 600);
+  color: $green-dark;
+  font-weight: 600;
   text-align: center;
 
   &--margin {
@@ -47,7 +48,8 @@
   margin-bottom: 16px;
 
   &__title {
-    @include f-text(rem(28), $green-dark, 600);
+    color: $green-dark;
+    font-weight: 600;
     text-align: center;
   }
 

@@ -2,18 +2,23 @@
 // green
 $green-main: rgba(57, 96, 57);
 $green-main-02: rgba($green-main, 0.2);
+$green-main-03: rgba($green-main, 0.3);
 $green-main-04: rgba($green-main, 0.4);
 $secondary-bg-hover: rgba($green-main, 0.1);
 $green-secondary-hover: rgba($green-main, 0.1);
 $green-light-bg: rgba($green-main, 0.3);
 $green-middle: rgba(30, 85, 21);
 $green-olive: $green-main;
+$green-olive-01: rgba($green-olive, 0.1);
+$green-olive-05: rgba($green-olive, 0.5);
 $green-primary-hover: rgba(5, 94, 5);
 $green-recipe: rgba(0, 128, 0);
+$green-recipe-04: rgba($green-recipe, 0.4);
 $green-dark: rgba(16, 49, 11);
 $green-dark-04: rgba($green-dark, 0.4);
-$green-white: rgba(231, 236, 231, 1);
-
+$green-white: rgba(231, 236, 231);
+$green-cremy: rgba(215, 223, 215);
+$green-cremy09: rgba($green-cremy, 0.9);
 $green-salbei: rgba(196, 208, 196);
 $green-salbei-light: rgba($green-salbei, 0.4);
 
@@ -22,6 +27,7 @@ $creme-main: rgba(250, 240, 230);
 $creme-main-08: rgba($creme-main, 0.8);
 $creme-main-06: rgba($creme-main, 0.6);
 $creme-main-04: rgba($creme-main, 0.4);
+$creme-main-02: rgba($creme-main, 0.2);
 $creme-yellow: rgba(245, 245, 220);
 $creme-primary-hover: rgba(250, 224, 198);
 $creme-secondary-hover: rgba($creme-primary-hover, 0.2);
@@ -29,7 +35,9 @@ $creme-secondary-hover: rgba($creme-primary-hover, 0.2);
 $creme-white: rgba(255, 254, 254);
 $white: white;
 
-//paprika (validation)
+$rose: rgba(255, 217, 179);
+$mustard: rgba(207, 215, 0);
+$mustard-03: rgba($mustard, 0.3);
 $paprika: rgba(168, 68, 42);
 
 //BreakPoints
@@ -40,6 +48,7 @@ $breakpoint-xl: 1200px;
 
 $max-dp-width: 1440px;
 $lg-dp-width: 1332px;
+$max-recipe-width: 1152px;
 
 $z-index-dropdown: 1000;
 $z-index-modal: 1050;
@@ -51,3 +60,12 @@ $animation-time: 250ms;
 // Fonts
 $f-txt: 'Quicksand', sans-serif;
 $f-title: 'Ubuntu', sans-serif;
+
+// Spacing
+
+$spaceing0-48: clamp(0px, 1vw, 40px);
+$spaceing16-24: clamp(16px, 2vw, 24px);
+$spaceing16-40: clamp(16px, 8vw, 40px);
+$spaceing32-40: clamp(32px, 6vw, 40px);
+$spaceing40-48: clamp(40px, 4vw, 48px);
+$spaceing40-80: clamp(40px, 12vw, 80px);

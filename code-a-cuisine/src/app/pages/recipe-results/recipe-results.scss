@@ -1,0 +1,95 @@
+@use '../../../styles/abstracts' as *;
+
+:host {
+  @include page-bg($green-olive);
+}
+
+.body {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 40px;
+}
+
+.loading-spinner {
+  align-self: center;
+}
+
+.result {
+  display: grid;
+  gap: 48px;
+  @include respond-to(lg) {
+    gap: 88px;
+  }
+
+  &__header {
+    display: grid;
+    grid-template-rows: repeat(auto-fit, 1fr);
+    grid-template-areas:
+      'title'
+      'img'
+      'description'
+      'tags';
+
+    @include respond-to(lg) {
+      max-height: 222px;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      grid-template-areas:
+        'title img'
+        'description img'
+        'tags img';
+    }
+
+    gap: $spaceing16-24;
+  }
+
+  &__recipes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: $spaceing16-24;
+  }
+}
+
+.header {
+  &__img {
+    height: 100%;
+    min-height: 131px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 20px;
+    grid-area: img;
+    justify-self: center;
+    align-self: flex-end;
+  }
+
+  &__title {
+    color: $creme-main;
+    font-weight: 600;
+    grid-area: title;
+  }
+
+  &__description {
+    color: white;
+    font-weight: 400;
+    grid-area: description;
+  }
+
+  &__tags {
+    grid-area: tags;
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    overflow-x: auto;
+  }
+}
+
+.new-btn {
+  justify-self: flex-end;
+
+  &--icon {
+    width: 24px;
+    height: 2px;
+    fill: $creme-main;
+  }
+}

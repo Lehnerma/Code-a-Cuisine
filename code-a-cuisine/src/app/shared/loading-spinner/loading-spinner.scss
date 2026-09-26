@@ -1,0 +1,17 @@
+@use '../../../styles/abstracts' as *;
+
+.spinner {
+  @include flex-center;
+  flex-direction: column;
+  gap: 32px;
+  &__img {
+    background-color: $green-salbei;
+    border-radius: 20px;
+    padding: 18px;
+    height: 304px;
+  }
+  &__title {
+    color: $creme-main;
+    font-weight: 700;
+  }
+}

@@ -1,0 +1,303 @@
+@use '../../../styles/abstracts' as *;
+
+:host {
+  @include page-bg(white);
+}
+
+.body {
+  margin-bottom: 122px;
+  display: grid;
+  gap: 40px;
+}
+
+.recipe {
+  display: grid;
+  justify-content: center;
+  gap: $spaceing40-48;
+  background-color: $creme-main-02;
+  border-radius: 20px;
+  padding: $spaceing32-40 4px;
+  border: solid 3px $creme-main;
+
+  &__details {
+    max-width: $max-recipe-width;
+    color: $green-middle;
+    padding: 24px;
+    background-color: $creme-main;
+    border-radius: 20px;
+    display: grid;
+    gap: 16px;
+    grid-template-areas:
+      'time'
+      'title'
+      'chefs'
+      'nutrition'
+      'tags';
+  }
+
+  &__ingredients {
+    display: grid;
+    gap: 32px;
+  }
+
+  &__directions {
+    display: grid;
+    gap: 32px;
+  }
+}
+
+.details {
+  &__title {
+    grid-area: title;
+  }
+
+  &__tags {
+    grid-area: tags;
+    @include flex-center;
+    justify-content: flex-start;
+  }
+
+  &__nutrition {
+    grid-area: nutrition;
+    margin-top: 32px;
+    color: $green-dark;
+    @include f-text(clamp(rem(18), 2.5vw, rem(20)), $green-dark, 600);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__time {
+    grid-area: time;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__chefs {
+    grid-area: chefs;
+    @include flex-center;
+    justify-content: flex-start;
+    gap: 16px;
+  }
+}
+
+.chefs {
+  &__title {
+    display: none;
+    @include respond-to(md) {
+      display: block;
+    }
+  }
+}
+
+.nutrition {
+  &__title {
+    @include f-text(rem(18), $green-dark, 500);
+  }
+
+  &__table {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    column-gap: $spaceing16-24;
+    row-gap: 16px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__data {
+    @include respond-to(md) {
+      font-weight: 500;
+    }
+  }
+}
+
+.tags {
+  @include flex-center;
+  justify-content: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero-container {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  column-gap: $spaceing40-80;
+  row-gap: 24px;
+  padding: 8px;
+}
+
+.ingredients {
+  &__container {
+    display: grid;
+    align-content: start;
+    width: 100%;
+    gap: $spaceing16-24;
+
+    @include respond-to(sm) {
+      justify-content: center;
+    }
+  }
+
+  &__title {
+    color: $green-recipe;
+    font-weight: 600;
+  }
+
+  &__list {
+    padding-left: 20px;
+  }
+
+  &__item {
+    list-style-type: disc;
+    font-weight: 500;
+  }
+
+  &__amount {
+    min-width: 72px;
+    display: inline-block;
+  }
+}
+
+.directions {
+  @include f-text(rem(18), $green-dark, 600);
+  @include respond-to(md) {
+    .text-16-24 {
+      font-weight: 500;
+    }
+  }
+  @include respond-to(lg) {
+    grid-template-columns: 1fr 1fr;
+    max-width: 880px;
+    justify-self: center;
+  }
+
+  &__step {
+    display: grid;
+    align-content: start;
+    gap: 16px;
+  }
+
+  &__head {
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto 1fr auto;
+    gap: 8px;
+  }
+
+  &__title {
+    font-weight: 500;
+  }
+
+  &__description {
+    font-weight: 500;
+    line-height: 20px;
+    @include respond-to(md) {
+      line-height: 100%;
+    }
+  }
+
+  &__number {
+    display: grid;
+    place-items: center;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background-color: $creme-main;
+    font-weight: 600;
+  }
+}
+
+.toggle {
+  @include f-text(rem(16), $green-olive, 500);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  justify-self: center;
+  padding: 8px 20px;
+  background: transparent;
+  border-radius: 100px;
+  border: 1px solid transparent;
+  &:hover {
+    border: 1px solid $green-olive-05;
+  }
+
+  &--turned {
+    transform: rotate(180deg);
+  }
+}
+
+.like {
+  color: $green-dark;
+  justify-self: stretch;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+
+  &__header {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  &__text {
+    @include f-text(rem(16), $green-dark, 500);
+  }
+  &__btn {
+    display: grid;
+    place-items: center;
+    justify-self: center;
+    padding: 0;
+  }
+}
+
+.cta {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: $spaceing16-24;
+  padding: $spaceing16-40;
+  background-color: $green-olive-01;
+  border-radius: 20px;
+  color: $green-dark;
+}
+
+.new-btn {
+  justify-self: end;
+}
+
+.next-btn--icon {
+  fill: $green-olive;
+}
+
+@include respond-to(lg) {
+  .recipe__details {
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-areas:
+      'time time'
+      'title tags'
+      'title nutrition'
+      'chefs nutrition';
+  }
+
+  .details__nutrition {
+    margin-top: 0;
+  }
+
+  .toggle {
+    display: none;
+  }
+}
+
+.is-collapsed {
+  @media (max-width: #{$breakpoint-lg - 1}) {
+    display: none;
+  }
+}

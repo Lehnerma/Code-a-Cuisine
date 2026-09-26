@@ -26,4 +26,11 @@ export class IngredientService {
   remove(id: string): void {
     this.ingredients.update((list) => list.filter((item) => item.id !== id));
   }
+
+  /**
+   * Clears all collected ingredients.
+   */
+  reset(): void {
+    this.ingredients.set([]);
+  }
 }
