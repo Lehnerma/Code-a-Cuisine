@@ -1,0 +1,46 @@
+@use '../../../styles/abstracts' as *;
+
+.cookbook {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  column-gap: 16px;
+  row-gap: 24px;
+  background-color: $green-main-004;
+  border-radius: 20px;
+  padding: $spaceing16-40 $spaceing16-24;
+
+  &__intro {
+    max-width: 450px;
+  }
+
+  &__title {
+    color: $green-middle;
+    font-weight: 700;
+  }
+
+  &__description {
+    color: $green-dark;
+    font-weight: 500;
+  }
+
+  &__most-liked {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
+.most-liked {
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    @include f-text(rem(24), $green-middle, 600);
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+}

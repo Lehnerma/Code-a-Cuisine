@@ -5,6 +5,7 @@ import { PreferencesPage } from './pages/preferences-page/preferences-page';
 import { RecipeResults } from './pages/recipe-results/recipe-results';
 import { Recipe } from './pages/recipe/recipe';
 import { ingredientsGuard } from './guards/ingredients-guard';
+import { Cookbook } from './pages/cookbook/cookbook';
 //import { dishSettingsGuard } from './guards/dish-settings-guard';
 
 export const routes: Routes = [
@@ -13,4 +14,5 @@ export const routes: Routes = [
   { path: 'generate-recipe/preferences', component: PreferencesPage, canActivate: [ingredientsGuard] },
   { path: 'recipe-results', component: RecipeResults }, //canActivate: [dishSettingsGuard]
   { path: 'recipe/:id', component: Recipe },
+  { path: 'cookbook', component: Cookbook },
 ];

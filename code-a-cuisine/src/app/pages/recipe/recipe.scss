@@ -261,6 +261,7 @@
 
 .cta {
   display: grid;
+  align-items: center;
   grid-template-columns: 1fr auto;
   gap: $spaceing16-24;
   padding: $spaceing16-40;

@@ -33,4 +33,15 @@ export class SupabaseService {
     if (error) throw error;
     return likes;
   }
+
+  /**
+   * Fetches the top recipes ordered by their `likes` count, descending.
+   * @param limit How many recipes to return.
+   * @throws The Supabase error if the recipes could not be loaded.
+   */
+  async fetchMostLikedRecipes(limit: number): Promise<Recipe[]> {
+    const { data, error } = await this.supabase.from('recipes').select('*').order('likes', { ascending: false }).limit(limit);
+    if (error) throw error;
+    return data as Recipe[];
+  }
 }
