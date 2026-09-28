@@ -1,16 +1,32 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, input, linkedSignal, signal } from '@angular/core';
 import { MainHeader } from '../../components/main-header/main-header';
 import { Dialog } from '../../shared/dialog/dialog';
+import { RecipeCard } from '../../shared/recipe-card/recipe-card';
+import { CuisineHero } from '../../shared/cuisine-hero/cuisine-hero';
 import { CUISINE_CATEGORIE_DATA, CuisineCategoriesKey } from '../../interfaces/cuisine-categories';
+import { Recipe } from '../../interfaces/recipe';
+
+/**
+ * Recipes shown per page. DEBUG value (2) — set back to 15 for production.
+ */
+const RECIPES_PER_PAGE = 2;
 
 @Component({
-  imports: [MainHeader, Dialog],
+  imports: [MainHeader, Dialog, RecipeCard, CuisineHero],
   selector: 'app-cuisine-category',
   styleUrl: './cuisine-category.scss',
   templateUrl: './cuisine-category.html',
 })
 export class CuisineCategory {
   category = input.required<string>();
+
+  /** Exposes the page size to the template for the continuous recipe numbering. */
+  protected readonly recipesPerPage = RECIPES_PER_PAGE;
+
+  /**
+   * All recipes of this category. Placeholder — fill this from your Supabase loading.
+   */
+  recipes = signal<Recipe[]>([]);
 
   /**
    * The matching category meta data, or undefined if the route param is not a known category.
@@ -19,6 +35,64 @@ export class CuisineCategory {
     const key = this.category();
     return this.isValidCategory(key) ? CUISINE_CATEGORIE_DATA[key] : undefined;
   });
+
+  /** Total number of pages, always at least 1. */
+  totalPages = computed(() => Math.max(1, Math.ceil(this.recipes().length / RECIPES_PER_PAGE)));
+
+  /** Current page; resets to 1 whenever the recipe list changes. */
+  currentPage = linkedSignal<Recipe[], number>({
+    source: this.recipes,
+    computation: () => 1,
+  });
+
+  /** The recipes belonging to the current page only. */
+  pagedRecipes = computed(() => {
+    const start = (this.currentPage() - 1) * RECIPES_PER_PAGE;
+    return this.recipes().slice(start, start + RECIPES_PER_PAGE);
+  });
+
+  /** Pagination is only rendered when the recipes span more than one page. */
+  showPagination = computed(() => this.recipes().length > RECIPES_PER_PAGE);
+
+  /** Page-number items with ellipsis gaps, mirroring the mockup ("1 2 3 … 8"). */
+  pageItems = computed<(number | '…')[]>(() => {
+    const total = this.totalPages();
+    const current = this.currentPage();
+    const wanted = [1, current - 1, current, current + 1, total];
+    const visible = [...new Set(wanted)].filter((page) => page >= 1 && page <= total).sort((a, b) => a - b);
+    return this.withEllipsis(visible);
+  });
+
+  /**
+   * Navigates to a page, clamped to the valid range.
+   * @param page the 1-based page number to open
+   */
+  goToPage(page: number): void {
+    this.currentPage.set(Math.min(Math.max(1, page), this.totalPages()));
+  }
+
+  /** Goes to the previous page, if there is one. */
+  prevPage(): void {
+    this.goToPage(this.currentPage() - 1);
+  }
+
+  /** Goes to the next page, if there is one. */
+  nextPage(): void {
+    this.goToPage(this.currentPage() + 1);
+  }
+
+  /**
+   * Inserts an ellipsis marker wherever the visible page numbers skip a gap.
+   * @param visible ascending page numbers to render as buttons
+   */
+  private withEllipsis(visible: number[]): (number | '…')[] {
+    const items: (number | '…')[] = [];
+    visible.forEach((page, index) => {
+      if (index > 0 && page - visible[index - 1] > 1) items.push('…');
+      items.push(page);
+    });
+    return items;
+  }
 
   /**
    * Narrows a raw route param to a known CuisineCategoriesKey.

@@ -2,9 +2,41 @@
   <main-header backLink="/cookbook" theme="green" backLinkName="Back"></main-header>
 
   @if (categoryMeta(); as meta) {
-    <article class="cuisine-category">
-      <h1 class="cuisine-category__title text-40-64">{{ meta.emoji }} {{ meta.name }}</h1>
-      <img class="cuisine-category__image" [src]="meta.imagePath" [alt]="meta.name" />
+    <article>
+      <app-cuisine-hero [category]="meta.name"></app-cuisine-hero>
+      <ol>
+        @for (recipe of pagedRecipes(); track recipe.id; let i = $index) {
+          <li>
+            <app-recipe-card
+              [recipeNumber]="(currentPage() - 1) * recipesPerPage + i + 1"
+              [recipeTitle]="recipe.title"
+              [cookingTime]="recipe.cooking_time"
+              [likes]="recipe.likes"
+              [recipeId]="recipe.id"
+            ></app-recipe-card>
+          </li>
+        }
+      </ol>
+
+      @if (showPagination()) {
+        <nav class="pagination" aria-label="Recipe pages">
+          <button type="button" class="pagination__prev" (click)="prevPage()" [disabled]="currentPage() === 1" aria-label="Previous page">
+            &lt;
+          </button>
+          @for (item of pageItems(); track $index) {
+            @if (item === '…') {
+              <span class="pagination__ellipsis" aria-hidden="true">…</span>
+            } @else {
+              <button type="button" class="pagination__page" (click)="goToPage(item)" [attr.aria-current]="item === currentPage() ? 'page' : null">
+                {{ item }}
+              </button>
+            }
+          }
+          <button type="button" class="pagination__next" (click)="nextPage()" [disabled]="currentPage() === totalPages()" aria-label="Next page">
+            &gt;
+          </button>
+        </nav>
+      }
     </article>
   } @else {
     <app-dialog
