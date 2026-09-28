@@ -19,7 +19,7 @@ export const CUISINE_CATEGORIE_DATA: Record<CuisineCategoriesKey, CuisineCategor
     imagePath: '/assets/img/cuisine-cta/italian.png',
     heroCta: {
       mob: '/assets/img/hero_cuisine_mob/italian.png',
-      desktop: '/assets/img/hero_cuisine_desktop/italien.png',
+      desktop: '/assets/img/hero_cuisine_desktop/italian.png',
     },
   },
   german: {

@@ -12,6 +12,7 @@ export interface Recipe {
   extra_ingredients: RecipeIngredient[];
   steps: StepItem[];
   likes: number;
+  cuisine_category: string;
 }
 
 interface StepItem {

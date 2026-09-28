@@ -13,12 +13,38 @@ const RECIPES_PER_PAGE = 2;
 
 @Component({
   imports: [MainHeader, Dialog, RecipeCard, CuisineHero],
+import { Component, computed, inject, input, linkedSignal, resource, signal } from '@angular/core';
+import { MainHeader } from '../../components/main-header/main-header';
+import { Dialog } from '../../shared/dialog/dialog';
+import { RecipeCard } from '../../shared/recipe-card/recipe-card';
+import { CUISINE_CATEGORIE_DATA, CuisineCategoriesKey } from '../../interfaces/cuisine-categories';
+import { Recipe } from '../../interfaces/recipe';
+import { SupabaseService } from '../../services/supabase-service';
+
+/**
+ * Recipes shown per page.
+ */
+// todo set back to 15
+const RECIPES_PER_PAGE = 2;
+
+@Component({
+  imports: [MainHeader, Dialog, RecipeCard],
   selector: 'app-cuisine-category',
   styleUrl: './cuisine-category.scss',
   templateUrl: './cuisine-category.html',
 })
 export class CuisineCategory {
   category = input.required<string>();
+  supabaseService = inject(SupabaseService);
+
+  recipes = resource({
+    params: () => ({ cat: this.category() }),
+    loader: ({ params }) => this.supabaseService.fetchCategorieRecipes(params.cat),
+    defaultValue: [],
+  });
+
+  /** Exposes the page size to the template for the continuous recipe numbering. */
+  recipesPerPage = RECIPES_PER_PAGE;
 
   /** Exposes the page size to the template for the continuous recipe numbering. */
   protected readonly recipesPerPage = RECIPES_PER_PAGE;
@@ -37,22 +63,22 @@ export class CuisineCategory {
   });
 
   /** Total number of pages, always at least 1. */
-  totalPages = computed(() => Math.max(1, Math.ceil(this.recipes().length / RECIPES_PER_PAGE)));
+  totalPages = computed(() => Math.max(1, Math.ceil(this.recipes.value().length / RECIPES_PER_PAGE)));
 
   /** Current page; resets to 1 whenever the recipe list changes. */
   currentPage = linkedSignal<Recipe[], number>({
-    source: this.recipes,
+    source: this.recipes.value ?? [],
     computation: () => 1,
   });
 
   /** The recipes belonging to the current page only. */
   pagedRecipes = computed(() => {
     const start = (this.currentPage() - 1) * RECIPES_PER_PAGE;
-    return this.recipes().slice(start, start + RECIPES_PER_PAGE);
+    return this.recipes.value().slice(start, start + RECIPES_PER_PAGE);
   });
 
   /** Pagination is only rendered when the recipes span more than one page. */
-  showPagination = computed(() => this.recipes().length > RECIPES_PER_PAGE);
+  showPagination = computed(() => this.recipes.value().length > RECIPES_PER_PAGE);
 
   /** Page-number items with ellipsis gaps, mirroring the mockup ("1 2 3 … 8"). */
   pageItems = computed<(number | '…')[]>(() => {
