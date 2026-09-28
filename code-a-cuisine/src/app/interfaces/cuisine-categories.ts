@@ -3,7 +3,7 @@ export type CuisineCategories = 'italian' | 'german' | 'japanese' | 'gourmet' | 
 export type CuisineCategoriesKey = CuisineCategories;
 
 export interface CuisineCategoriesMeta {
-  name: string;
+  name: CuisineCategories;
   emoji: string;
   imagePath: string;
   heroCta: {

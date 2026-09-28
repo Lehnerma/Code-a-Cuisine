@@ -3,10 +3,7 @@
 
   @if (categoryMeta(); as meta) {
     <article>
-      <picture>
-        <source [srcset]="meta.heroCta.mob" media="(max-width: 600px)" />
-        <img [src]="meta.heroCta.desktop" alt="Category {{ meta.name }}" />
-      </picture>
+      <app-cuisine-hero [category]="meta.name"></app-cuisine-hero>
       <ol>
         @for (recipe of pagedRecipes(); track recipe.id; let i = $index) {
           <li>

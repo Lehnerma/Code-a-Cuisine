@@ -1,3 +1,18 @@
+import { Component, computed, input, linkedSignal, signal } from '@angular/core';
+import { MainHeader } from '../../components/main-header/main-header';
+import { Dialog } from '../../shared/dialog/dialog';
+import { RecipeCard } from '../../shared/recipe-card/recipe-card';
+import { CuisineHero } from '../../shared/cuisine-hero/cuisine-hero';
+import { CUISINE_CATEGORIE_DATA, CuisineCategoriesKey } from '../../interfaces/cuisine-categories';
+import { Recipe } from '../../interfaces/recipe';
+
+/**
+ * Recipes shown per page. DEBUG value (2) — set back to 15 for production.
+ */
+const RECIPES_PER_PAGE = 2;
+
+@Component({
+  imports: [MainHeader, Dialog, RecipeCard, CuisineHero],
 import { Component, computed, inject, input, linkedSignal, resource, signal } from '@angular/core';
 import { MainHeader } from '../../components/main-header/main-header';
 import { Dialog } from '../../shared/dialog/dialog';
@@ -30,6 +45,14 @@ export class CuisineCategory {
 
   /** Exposes the page size to the template for the continuous recipe numbering. */
   recipesPerPage = RECIPES_PER_PAGE;
+
+  /** Exposes the page size to the template for the continuous recipe numbering. */
+  protected readonly recipesPerPage = RECIPES_PER_PAGE;
+
+  /**
+   * All recipes of this category. Placeholder — fill this from your Supabase loading.
+   */
+  recipes = signal<Recipe[]>([]);
 
   /**
    * The matching category meta data, or undefined if the route param is not a known category.
