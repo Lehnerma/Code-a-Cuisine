@@ -1,0 +1,47 @@
+@use '../../../styles/abstracts' as *;
+
+.card {
+  &__container {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &:hover {
+      .card__emoji {
+        transform: rotate(20deg);
+      }
+
+      .card__img {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__title {
+    @include f-text(rem(28), $green-middle, 600);
+  }
+
+  &__emoji {
+    display: inline-block;
+    @include animation(transform);
+  }
+
+  &__img {
+    object-fit: contain;
+    object-position: center;
+    @include animation;
+    width: 100%;
+  }
+}
+
+.img-container {
+  overflow: hidden;
+  border-radius: 8px;
+  aspect-ratio: 1/1;
+}

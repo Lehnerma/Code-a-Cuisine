@@ -2,13 +2,17 @@
 
 .cookbook {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  column-gap: 16px;
-  row-gap: 24px;
-  background-color: $green-main-004;
-  border-radius: 20px;
-  padding: $spaceing16-40 $spaceing16-24;
-
+  justify-items: center;
+  gap: 40px;
+  &__head {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    column-gap: 16px;
+    row-gap: 24px;
+    background-color: $green-main-004;
+    border-radius: 20px;
+    padding: $spaceing16-40 $spaceing16-24;
+  }
   &__intro {
     max-width: 450px;
   }
@@ -26,6 +30,17 @@
   &__most-liked {
     max-width: 100%;
     overflow-x: auto;
+    display: grid;
+    gap: 16px;
+  }
+
+  &__categories {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    column-gap: $spaceing16-40;
+    row-gap: 24px;
+    width: 100%;
   }
 }
 
@@ -43,4 +58,11 @@
     overflow-x: auto;
     padding-bottom: 8px;
   }
+}
+
+.new-btn {
+  @include respond-to(md) {
+    justify-self: flex-end;
+  }
+  margin-bottom: $spaceing40-80;
 }

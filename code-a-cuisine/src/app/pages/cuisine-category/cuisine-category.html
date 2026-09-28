@@ -1,0 +1,16 @@
+<div class="body">
+  <main-header backLink="/cookbook" theme="green" backLinkName="Back"></main-header>
+
+  @if (categoryMeta(); as meta) {
+    <article class="cuisine-category">
+      <h1 class="cuisine-category__title text-40-64">{{ meta.emoji }} {{ meta.name }}</h1>
+      <img class="cuisine-category__image" [src]="meta.imagePath" [alt]="meta.name" />
+    </article>
+  } @else {
+    <app-dialog
+      title="Category not found"
+      message="This cuisine category does not exist. Please pick one from the cookbook."
+      actionRoute="/cookbook"
+    ></app-dialog>
+  }
+</div>

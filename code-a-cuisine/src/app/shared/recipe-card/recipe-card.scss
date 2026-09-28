@@ -60,6 +60,12 @@
     height: 100%;
     max-height: 180px;
     overflow: hidden;
+    background-color: rgba(219, 224, 219, 0.7);
+    @include animation(background-color, 250ms);
+
+    &:hover {
+      background-color: rgba(219, 224, 219);
+    }
   }
 
   &__top {

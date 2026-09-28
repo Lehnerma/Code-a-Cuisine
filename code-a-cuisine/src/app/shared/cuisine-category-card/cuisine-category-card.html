@@ -1,0 +1,10 @@
+<a href="cookbook/{{ meta().name }}" class="card__link">
+  <div class="card__container">
+    <h2 class="card__title">{{ meta().name | titlecase }} cuisine</h2>
+    <span class="card__title card__emoji">{{ meta().emoji }}</span>
+  </div>
+
+  <figure class="img-container">
+    <img class="card__img" src="{{ meta().imagePath }}" alt="" />
+  </figure>
+</a>
