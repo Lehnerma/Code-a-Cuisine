@@ -44,4 +44,17 @@ export class SupabaseService {
     if (error) throw error;
     return data as Recipe[];
   }
+
+  /**
+   *
+   * @param category Is the category with we want to fetch
+   * @returns All recipes in the category class in an array with the right interface
+   */
+  async fetchCategorieRecipes(category: string): Promise<Recipe[]> {
+    const { data, error } = await this.supabase.from('recipes').select('*').eq('cuisine_category', category);
+    if (error) throw error;
+    console.log('fetch categories: ', data);
+
+    return data;
+  }
 }
