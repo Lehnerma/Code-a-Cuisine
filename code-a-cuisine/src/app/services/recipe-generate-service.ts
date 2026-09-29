@@ -29,8 +29,10 @@ export class RecipeGenerateService {
       });
 
       if (!result.ok) throw new Error('n8n request failed');
+      const data = await result.json();
+      console.log(data);
 
-      return (await result.json()) as RecipeResponse;
+      return Array.isArray(data) ? { status: 'success', recipes: data } : (data as RecipeResponse);
     },
   });
 
@@ -38,7 +40,6 @@ export class RecipeGenerateService {
    * Submits the current ingredient and preference settings to generate a recipe.
    */
   submit(): void {
-    console.log('test submit');
     this.dishSettings.set({
       ingredients: this.ingredientService.ingredients().map(({ name, serving_size, unit }) => ({ name, serving_size, unit })),
       portions: this.preferencesService.portions(),
@@ -47,7 +48,6 @@ export class RecipeGenerateService {
       cuisine: this.preferencesService.cuisine(),
       diet: this.preferencesService.diet(),
     });
-    console.log(this.dishSettings());
   }
 
   /** Resets the ingredients, preferences, and current recipe-generation request. */

@@ -1,34 +1,21 @@
-import { Component, computed, input, linkedSignal, signal } from '@angular/core';
+import { Component, computed, inject, input, linkedSignal, resource } from '@angular/core';
 import { MainHeader } from '../../components/main-header/main-header';
 import { Dialog } from '../../shared/dialog/dialog';
-import { RecipeCard } from '../../shared/recipe-card/recipe-card';
 import { CuisineHero } from '../../shared/cuisine-hero/cuisine-hero';
 import { CUISINE_CATEGORIE_DATA, CuisineCategoriesKey } from '../../interfaces/cuisine-categories';
 import { Recipe } from '../../interfaces/recipe';
-
-/**
- * Recipes shown per page. DEBUG value (2) — set back to 15 for production.
- */
-const RECIPES_PER_PAGE = 2;
-
-@Component({
-  imports: [MainHeader, Dialog, RecipeCard, CuisineHero],
-import { Component, computed, inject, input, linkedSignal, resource, signal } from '@angular/core';
-import { MainHeader } from '../../components/main-header/main-header';
-import { Dialog } from '../../shared/dialog/dialog';
-import { RecipeCard } from '../../shared/recipe-card/recipe-card';
-import { CUISINE_CATEGORIE_DATA, CuisineCategoriesKey } from '../../interfaces/cuisine-categories';
-import { Recipe } from '../../interfaces/recipe';
 import { SupabaseService } from '../../services/supabase-service';
+import { Tag } from '../../shared/tag/tag';
+import { TitleCasePipe } from '@angular/common';
 
 /**
  * Recipes shown per page.
  */
 // todo set back to 15
-const RECIPES_PER_PAGE = 2;
+const RECIPES_PER_PAGE = 4;
 
 @Component({
-  imports: [MainHeader, Dialog, RecipeCard],
+  imports: [MainHeader, Dialog, CuisineHero, Tag, TitleCasePipe],
   selector: 'app-cuisine-category',
   styleUrl: './cuisine-category.scss',
   templateUrl: './cuisine-category.html',
@@ -44,15 +31,7 @@ export class CuisineCategory {
   });
 
   /** Exposes the page size to the template for the continuous recipe numbering. */
-  recipesPerPage = RECIPES_PER_PAGE;
-
-  /** Exposes the page size to the template for the continuous recipe numbering. */
   protected readonly recipesPerPage = RECIPES_PER_PAGE;
-
-  /**
-   * All recipes of this category. Placeholder — fill this from your Supabase loading.
-   */
-  recipes = signal<Recipe[]>([]);
 
   /**
    * The matching category meta data, or undefined if the route param is not a known category.
@@ -74,13 +53,16 @@ export class CuisineCategory {
   /** The recipes belonging to the current page only. */
   pagedRecipes = computed(() => {
     const start = (this.currentPage() - 1) * RECIPES_PER_PAGE;
+
+    console.log(this.recipes.value().slice(start, start + RECIPES_PER_PAGE));
+
     return this.recipes.value().slice(start, start + RECIPES_PER_PAGE);
   });
 
   /** Pagination is only rendered when the recipes span more than one page. */
   showPagination = computed(() => this.recipes.value().length > RECIPES_PER_PAGE);
 
-  /** Page-number items with ellipsis gaps, mirroring the mockup ("1 2 3 … 8"). */
+  /** Page-number items with ellipsis gaps. */
   pageItems = computed<(number | '…')[]>(() => {
     const total = this.totalPages();
     const current = this.currentPage();

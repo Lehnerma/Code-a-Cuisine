@@ -7,13 +7,13 @@ import { Recipe } from './pages/recipe/recipe';
 import { ingredientsGuard } from './guards/ingredients-guard';
 import { Cookbook } from './pages/cookbook/cookbook';
 import { CuisineCategory } from './pages/cuisine-category/cuisine-category';
-//import { dishSettingsGuard } from './guards/dish-settings-guard';
+import { dishSettingsGuard } from './guards/dish-settings-guard';
 
 export const routes: Routes = [
   { path: '', component: LandingPage },
   { path: 'generate-recipe', component: GenerateRecipe },
   { path: 'generate-recipe/preferences', component: PreferencesPage, canActivate: [ingredientsGuard] },
-  { path: 'recipe-results', component: RecipeResults }, //canActivate: [dishSettingsGuard]
+  { path: 'recipe-results', component: RecipeResults, canActivate: [dishSettingsGuard] },
   { path: 'recipe/:id', component: Recipe },
   { path: 'cookbook', component: Cookbook },
   { path: 'cookbook/:category', component: CuisineCategory },

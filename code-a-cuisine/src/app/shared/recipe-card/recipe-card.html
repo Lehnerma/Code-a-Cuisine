@@ -17,12 +17,12 @@
         <h2 class="card__header--title text-lg">Recipe {{ recipeNumber() }}</h2>
       </div>
       <div class="card__content">
-        <h3>{{ recipeTitle() }}</h3>
+        <h3 class="text-24-32">{{ recipeTitle() }}</h3>
         <ng-container *ngTemplateOutlet="timeRow"></ng-container>
       </div>
     </section>
     <nav class="card__footer">
-      <app-button tag="a" [targetRoute]="'/recipe/' + recipeId()" className="btn__primary" theme="creme">View</app-button>
+      <app-button tag="a" [targetRoute]="'/recipe/' + recipeId()" className="btn__primary text-16-24" theme="creme">View</app-button>
     </nav>
   </article>
 } @else {
