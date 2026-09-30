@@ -8,5 +8,5 @@ export const dishSettingsGuard: CanActivateFn = () => {
 
   if (recipeGenerateService.dishSettings() !== undefined) return true;
 
-  return router.createUrlTree(['/preferences']);
+  return router.createUrlTree(['/generate-recipe/preferences']);
 };

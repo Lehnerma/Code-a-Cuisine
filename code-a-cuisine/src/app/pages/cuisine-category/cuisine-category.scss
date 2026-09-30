@@ -1,0 +1,104 @@
+@use '../../../styles/abstracts' as *;
+
+.body {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.recipies {
+  &__list {
+    display: grid;
+    gap: 40px;
+  }
+
+  &__pagination {
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 32px;
+  }
+}
+
+.recipe {
+  @include f-text(rem(16), $green-olive, 500);
+  line-height: 20px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 8px;
+  row-gap: 8px;
+  grid-template-areas: 'number time' 'title title' 'tags tags';
+
+  @include respond-to(md) {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      'number time tags'
+      'number title tags';
+    .recipe__number {
+      align-self: flex-end;
+    }
+  }
+  padding: 8px 10px;
+  border-radius: 16px;
+
+  &:hover {
+    background-color: $creme-main;
+  }
+
+  &__number {
+    grid-area: number;
+    display: grid;
+    place-items: center;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background-color: $creme-bg;
+    font-weight: 600;
+  }
+
+  &__time {
+    grid-area: time;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__title {
+    grid-area: title;
+  }
+
+  &__tags {
+    grid-area: tags;
+    display: flex;
+    gap: 8px;
+    padding: 8px 0;
+  }
+}
+
+.pagination {
+  @include f-text(rem(18), $green-dark, 500);
+
+  &__middle {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__btn {
+    @include f-text(rem(18), $green-dark, 500);
+    width: rem(24);
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    @include flex-center;
+    @include animation;
+
+    &:hover {
+      background-color: $creme-primary-hover;
+      transform: scale(1.01);
+    }
+  }
+}
+
+.isActiv {
+  background-color: $creme-main;
+}

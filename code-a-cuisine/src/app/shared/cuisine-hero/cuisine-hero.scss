@@ -1,0 +1,14 @@
+@use '../../../styles/abstracts' as *;
+
+.cuisine-hero {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  &__img {
+    display: block;
+    max-height: 152px;
+    width: 100%;
+    object-fit: contain;
+  }
+}
