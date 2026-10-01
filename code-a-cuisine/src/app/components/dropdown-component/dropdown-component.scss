@@ -11,6 +11,20 @@
   width: fit-content;
   height: var(--dropdown-height);
 
+  &--inline {
+    height: auto;
+
+    .dropdown__menu {
+      position: static;
+      margin-top: 4px;
+      transform: none;
+
+      &:not(.is-open) {
+        display: none;
+      }
+    }
+  }
+
   &__btn {
     @include flex-center;
     gap: 4px;
@@ -64,7 +78,7 @@
       border-radius: 8px;
 
       &:hover {
-        background-color: $creme-main-06;
+        background-color: $creme-main-08;
       }
     }
   }
