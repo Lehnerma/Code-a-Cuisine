@@ -1,6 +1,6 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, input } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject, input } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { Button } from '../../components/button/button';
 import { Tag } from '../tag/tag';
 
@@ -17,4 +17,9 @@ export class RecipeCard {
   cookingTime = input<number | string>(20);
   likes = input<number>(0);
   recipeId = input.required<string>();
+
+  private readonly router = inject(Router);
+
+  /** The page this card is shown on, so the recipe page can link back to it. */
+  protected readonly backParams = { back: this.router.url };
 }

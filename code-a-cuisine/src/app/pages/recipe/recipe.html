@@ -1,5 +1,5 @@
 <div class="body">
-  <main-header backLinkName="Recipe results" backLink="/recipe-results"></main-header>
+  <main-header [backLink]="back()" [backLinkName]="backName() | titlecase"></main-header>
   @if (recipe.isLoading()) {
     <p>Laoding the hole recipe - maybe u can get a Glas of water and drink it or u order 'Glasfaser'</p>
   } @else if (recipe.error()) {

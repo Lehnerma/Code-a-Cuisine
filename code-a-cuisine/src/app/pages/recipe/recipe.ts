@@ -17,10 +17,19 @@ export class Recipe {
   supabaseService = inject(SupabaseService);
   ingredientsOpen = signal(true);
   directionsOpen = signal(true);
+  back = input<string>('/cookbook');
 
   recipe = resource({
     params: () => ({ id: this.id() }),
     loader: ({ params }) => this.supabaseService.fetchRecipe(params.id),
+  });
+
+  //backName = computed(() => (this.back() === 'recipe-results' ? 'Recipe results' : this.back()));
+
+  backName = computed(() => {
+    const url = this.back();
+    if (url === '/recipe-results') return 'Recipe results';
+    return url.split('/').pop() ?? 'Cookbook';
   });
 
   /**
