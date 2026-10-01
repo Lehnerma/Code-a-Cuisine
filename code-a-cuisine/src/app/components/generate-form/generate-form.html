@@ -13,7 +13,7 @@
 
       <section class="fieldset--row">
         <input type="text" id="serving_size" class="fieldset__input input-sm text-base" formControlName="servingSize" placeholder="100" />
-        <app-dropdown-component className="fieldset__dropdown" [(selectedValue)]="unit"></app-dropdown-component>
+        <app-dropdown-component className="fieldset__dropdown" [inline]="true" [(selectedValue)]="unit"></app-dropdown-component>
         <app-button
           icon="add"
           theme="creme"
@@ -28,7 +28,7 @@
     </fieldset>
   </form>
 
-  <article class="greenbg form__list">
+  <article class="form__list greenbg">
     <h2 class="form__list--title text-md">List of your Ingredients</h2>
     <ul class="list text-base">
       @for (ingredient of ingredients(); track ingredient.id) {

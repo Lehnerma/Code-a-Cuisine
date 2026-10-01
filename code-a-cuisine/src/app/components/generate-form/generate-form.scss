@@ -2,6 +2,7 @@
 
 .body--grid {
   display: grid;
+  align-items: start;
   @include respond-to(660px) {
     grid-template-columns: 1fr 1fr;
   }
@@ -32,7 +33,7 @@
 
 .fieldset {
   display: grid;
-  grid-template-rows: auto 36px;
+  grid-template-rows: auto minmax(36px, auto);
   gap: clamp(11px, 2vw, 16px);
   width: 100%;
 
@@ -47,7 +48,7 @@
 
   &--row {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 8px;
   }
 }
@@ -95,6 +96,7 @@
   background-color: $green-light-bg;
   border-radius: 20px;
   padding: clamp(16px, 3vw, 24px);
+  min-height: 184px;
 }
 
 .flex-rewrap {

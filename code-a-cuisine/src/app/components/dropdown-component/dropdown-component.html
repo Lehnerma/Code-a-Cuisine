@@ -1,4 +1,4 @@
-<div class="dropdown" [style.--dropdown-height]="height()">
+<div class="dropdown" [class.dropdown--inline]="inline()" [style.--dropdown-height]="height()">
   <button
     (click)="toggle()"
     [attr.aria-controls]="listboxId"

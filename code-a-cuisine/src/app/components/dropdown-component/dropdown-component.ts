@@ -16,6 +16,7 @@ export class DropdownComponent {
   label = input<string>();
   className = input<string>();
   height = input<string>('100%');
+  inline = input(false);
   isOpen = signal(false);
   selectedValue = model<string | null>(null);
   listboxId = `dropdown-listbox-${Math.random().toString(36).slice(2)}`;
