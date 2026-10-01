@@ -7,6 +7,7 @@
     [attr.aria-disabled]="disabled()"
     [attr.tabindex]="disabled() ? -1 : 0"
     [routerLink]="disabled() ? null : targetRoute()"
+    [queryParams]="queryParams()"
   >
     <ng-container *ngTemplateOutlet="content"></ng-container>
   </a>

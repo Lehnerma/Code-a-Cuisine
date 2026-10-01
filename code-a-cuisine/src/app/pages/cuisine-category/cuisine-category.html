@@ -7,7 +7,7 @@
       <ol class="recipies__list">
         @for (recipe of pagedRecipes(); track recipe.id; let i = $index) {
           <li class="recipe__item">
-            <a [href]="'recipe/' + recipe.id" class="btn recipe">
+            <a [routerLink]="['/recipe', recipe.id]" [queryParams]="backParams" class="btn recipe">
               <span class="recipe__number" aria-hidden="true">{{ $index + 1 }}.</span>
               <section class="recipe__time">
                 <svg class="recipe__time--icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

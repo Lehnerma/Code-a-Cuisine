@@ -1,4 +1,5 @@
 import { Component, computed, inject, input, linkedSignal, resource } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { MainHeader } from '../../components/main-header/main-header';
 import { Dialog } from '../../shared/dialog/dialog';
 import { CuisineHero } from '../../shared/cuisine-hero/cuisine-hero';
@@ -15,7 +16,7 @@ import { TitleCasePipe } from '@angular/common';
 const RECIPES_PER_PAGE = 4;
 
 @Component({
-  imports: [MainHeader, Dialog, CuisineHero, Tag, TitleCasePipe],
+  imports: [MainHeader, Dialog, CuisineHero, RouterLink, Tag, TitleCasePipe],
   selector: 'app-cuisine-category',
   styleUrl: './cuisine-category.scss',
   templateUrl: './cuisine-category.html',
@@ -23,6 +24,10 @@ const RECIPES_PER_PAGE = 4;
 export class CuisineCategory {
   category = input.required<string>();
   supabaseService = inject(SupabaseService);
+  private readonly router = inject(Router);
+
+  /** Lets the recipe page link back to this category. */
+  protected readonly backParams = { back: this.router.url };
 
   recipes = resource({
     params: () => ({ cat: this.category() }),

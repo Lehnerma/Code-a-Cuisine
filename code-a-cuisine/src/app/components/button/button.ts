@@ -16,4 +16,5 @@ export class Button {
   tag = input<'button' | 'a'>('button');
   btnType = input<'button' | 'submit'>('button');
   disabled = input<boolean>(false);
+  queryParams = input<Record<string, string>>();
 }

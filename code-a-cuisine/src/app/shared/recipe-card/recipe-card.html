@@ -18,17 +18,19 @@
       </div>
       <div class="card__content">
         <h3 class="text-24-32">{{ recipeTitle() }}</h3>
-        <ng-container *ngTemplateOutlet="timeRow"></ng-container>
+        <ng-container [ngTemplateOutlet]="timeRow"></ng-container>
       </div>
     </section>
     <nav class="card__footer">
-      <app-button tag="a" [targetRoute]="'/recipe/' + recipeId()" className="btn__primary text-16-24" theme="creme">View</app-button>
+      <app-button tag="a" [targetRoute]="'/recipe/' + recipeId()" [queryParams]="backParams" className="btn__primary text-16-24" theme="creme"
+        >View</app-button
+      >
     </nav>
   </article>
 } @else {
-  <a class="card card--most-liked" [routerLink]="['/recipe', recipeId()]">
+  <a class="card card--most-liked" [routerLink]="['/recipe', recipeId()]" [queryParams]="backParams">
     <div class="card__top">
-      <ng-container *ngTemplateOutlet="timeRow"></ng-container>
+      <ng-container [ngTemplateOutlet]="timeRow"></ng-container>
       <app-tag type="like" [label]="likes().toString()" className="border-pill"></app-tag>
     </div>
     <h3 class="card__title">{{ recipeTitle() }}</h3>
